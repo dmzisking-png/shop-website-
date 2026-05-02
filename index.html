@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DMZ Mart Pro</title>
+<title>DMZ Mart Mega Store</title>
 
 <style>
 body{
@@ -21,7 +21,6 @@ padding:18px 22px;
 position:sticky;
 top:0;
 z-index:10;
-animation:fadeDown 0.6s ease;
 }
 
 .logo{
@@ -53,12 +52,10 @@ background-position:center;
 animation:slide 15s infinite;
 }
 
-/* HERO SLIDES */
 @keyframes slide{
 0%{background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');}
-33%{background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');}
-66%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
-100%{background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');}
+50%{background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');}
+100%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
 }
 
 /* CATEGORY */
@@ -68,21 +65,14 @@ gap:12px;
 overflow-x:auto;
 background:white;
 padding:15px;
-animation:fadeUp 0.6s ease;
 }
 
 .cat{
 padding:14px 18px;
 background:#eee;
 border-radius:25px;
+white-space:nowrap;
 font-size:18px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.cat:hover{
-background:#00ff99;
-transform:scale(1.1);
 }
 
 /* SECTION TITLE */
@@ -90,56 +80,48 @@ transform:scale(1.1);
 padding:18px 22px;
 font-size:24px;
 font-weight:bold;
-animation:fadeLeft 0.6s ease;
 }
 
-/* ROW */
-.row{
-display:flex;
+/* GRID (DENSER LIKE JUMIA) */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:15px;
-overflow-x:auto;
-padding:10px 22px;
+padding:20px;
 }
 
-/* PRODUCT CARD */
+/* CARD */
 .card{
-min-width:240px;
 background:white;
-border-radius:15px;
+border-radius:12px;
 overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.12);
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
 transition:0.3s;
-animation:fadeUp 0.6s ease;
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.03);
+transform:translateY(-8px);
 }
 
 .card img{
 width:100%;
-height:260px;
+height:230px;
 object-fit:cover;
-transition:0.3s;
-}
-
-.card:hover img{
-transform:scale(1.05);
 }
 
 .card h3{
 margin:10px;
-font-size:18px;
+font-size:16px;
 }
 
 .price{
-margin:0 10px 15px;
+margin:0 10px 12px;
 color:#00a86b;
-font-size:18px;
+font-size:16px;
 font-weight:bold;
 }
 
-/* PROMO BANNER */
+/* PROMO */
 .promo{
 margin:20px;
 padding:25px;
@@ -147,161 +129,104 @@ border-radius:15px;
 background:linear-gradient(90deg,#111,#00ff99);
 color:white;
 font-size:22px;
-font-weight:bold;
 text-align:center;
-animation:fadeUp 0.8s ease;
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes fadeDown{
-from{opacity:0;transform:translateY(-30px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes fadeLeft{
-from{opacity:0;transform:translateX(-30px);}
-to{opacity:1;transform:translateX(0);}
+font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP -->
 <div class="topbar">
 <div class="logo">DMZ MART</div>
 <a href="cart.html" class="cart">🛒 Cart</a>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-TECH • GAMING • LIFESTYLE STORE
+MEGA ELECTRONICS MARKETPLACE • DEALS EVERYDAY
 </div>
 
-<!-- CATEGORY -->
-<div class="catbar">
-<div class="cat">Phones</div>
-<div class="cat">Laptops</div>
-<div class="cat">TVs</div>
-<div class="cat">Gaming</div>
-<div class="cat">Home</div>
-<div class="cat">Audio</div>
-<div class="cat">Smart Tech</div>
-</div>
-
-<!-- PROMO -->
 <div class="promo">
-🔥 MEGA SALE LIVE — LIMITED TIME DEALS + FREE DELIVERY
+🔥 FLASH SALE • ELECTRONICS • GAMING • HOME DEVICES
 </div>
 
-<!-- FLASH DEALS -->
 <div class="section-title">⚡ Flash Deals</div>
-<div class="row">
+<div class="grid" id="flash"></div>
 
-<a href="product.html?name=iPhone 15 Pro Max&price=1350000&img=https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<div class="section-title">📱 Phones & Smart Devices</div>
+<div class="grid" id="phones"></div>
+
+<div class="section-title">💻 Laptops & Computing</div>
+<div class="grid" id="laptops"></div>
+
+<div class="section-title">🎮 Gaming & Consoles</div>
+<div class="grid" id="gaming"></div>
+
+<div class="section-title">🏠 Home Appliances</div>
+<div class="grid" id="home"></div>
+
+<div class="section-title">🔊 Audio & Accessories</div>
+<div class="grid" id="audio"></div>
+
+<script>
+
+/* MASSIVE PRODUCT DATABASE (AUTO EXPANDS FEEL LIKE 100+) */
+const products = {
+flash:[
+"iPhone 15 Pro","Samsung S24 Ultra","MacBook Pro M3","PS5 Console","Xbox Series X"
+],
+phones:[
+"iPhone 14","iPhone 15","Samsung A55","Samsung S23","Google Pixel 8","Infinix Zero Ultra","Tecno Camon 30","Xiaomi 14"
+],
+laptops:[
+"MacBook Air M2","MacBook Pro M3","Dell XPS 15","HP Envy","Lenovo Legion","Asus ROG","Acer Swift","Surface Laptop 5"
+],
+gaming:[
+"PS5 Digital","PS5 Disc","Xbox Series S","Xbox Series X","Gaming Chair","Gaming Monitor","RGB Keyboard","Gaming Mouse"
+],
+home:[
+"Washing Machine","Smart Fridge","Air Conditioner","Robot Vacuum","Electric Cooker","Microwave Oven","Water Dispenser","Blender"
+],
+audio:[
+"AirPods Pro","Sony Headphones","JBL Speaker","Bose Headset","Marshall Speaker","Beats Studio","Wireless Earbuds","Soundbar"
+]
+};
+
+const images=[
+"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+"https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+"https://images.unsplash.com/photo-1606813907291-d86efa9b94db",
+"https://images.unsplash.com/photo-1585386959984-a41552231693",
+"https://images.unsplash.com/photo-1512499617640-c2f999098c3a"
+];
+
+function render(id,list){
+let box=document.getElementById(id);
+list.forEach((name,i)=>{
+let price=Math.floor(Math.random()*900000)+50000;
+let img=images[i%images.length];
+
+box.innerHTML+=`
+<a href="product.html?name=${name}&price=${price}&img=${img}">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<h3>iPhone 15 Pro Max</h3>
-<div class="price">₦1,350,000</div>
+<img src="${img}">
+<h3>${name}</h3>
+<div class="price">₦${price}</div>
 </div>
 </a>
+`;
+});
+}
 
-<a href="product.html?name=Galaxy Z Fold&price=1450000&img=https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
-<h3>Galaxy Z Fold</h3>
-<div class="price">₦1,450,000</div>
-</div>
-</a>
+/* BUILD EVERYTHING */
+render("flash",products.flash);
+render("phones",products.phones);
+render("laptops",products.laptops);
+render("gaming",products.gaming);
+render("home",products.home);
+render("audio",products.audio);
 
-<a href="product.html?name=Gaming Laptop RTX&price=1600000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>RTX Gaming Laptop</h3>
-<div class="price">₦1,600,000</div>
-</div>
-</a>
-
-</div>
-
-<!-- GAMING -->
-<div class="section-title">🎮 Gaming Zone</div>
-<div class="row">
-
-<a href="product.html?name=PS5 Digital&price=720000&img=https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<h3>PS5 Digital</h3>
-<div class="price">₦720,000</div>
-</div>
-</a>
-
-<a href="product.html?name=Gaming Chair&price=250000&img=https://images.unsplash.com/photo-1587202372775-98927f9e2f47">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1587202372775-98927f9e2f47">
-<h3>Gaming Chair</h3>
-<div class="price">₦250,000</div>
-</div>
-</a>
-
-<a href="product.html?name=RGB Keyboard&price=45000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>RGB Keyboard</h3>
-<div class="price">₦45,000</div>
-</div>
-</a>
-
-</div>
-
-<!-- HOME TECH -->
-<div class="section-title">🏠 Smart Home Tech</div>
-<div class="row">
-
-<a href="product.html?name=Smart Fridge&price=900000&img=https://images.unsplash.com/photo-1602526216910-1e9f1e1e1e1e">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1585238342028-4c7f3b2c8b12">
-<h3>Smart Fridge</h3>
-<div class="price">₦900,000</div>
-</div>
-</a>
-
-<a href="product.html?name=Robot Vacuum&price=180000&img=https://images.unsplash.com/photo-1581578731548-c64695cc6952">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
-<h3>Robot Vacuum</h3>
-<div class="price">₦180,000</div>
-</div>
-</a>
-
-</div>
-
-<!-- AUDIO -->
-<div class="section-title">🔊 Audio & Sound</div>
-<div class="row">
-
-<a href="product.html?name=Sony Headphones&price=120000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
-<h3>Sony Headphones</h3>
-<div class="price">₦120,000</div>
-</div>
-</a>
-
-<a href="product.html?name=JBL Speaker&price=85000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
-<h3>JBL Speaker</h3>
-<div class="price">₦85,000</div>
-</div>
-</a>
-
-</div>
+</script>
 
 </body>
 </html>
