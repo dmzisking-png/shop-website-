@@ -7,42 +7,50 @@
         body {
             margin: 0;
             font-family: Arial;
-            background: #f5f5f5;
+            background: #0f0f0f;
+            color: white;
         }
 
         /* HEADER */
         .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
             background: black;
-            color: white;
-            padding: 15px;
-            text-align: center;
             position: sticky;
             top: 0;
+            z-index: 100;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
+            letter-spacing: 2px;
         }
 
         .cart {
-            position: absolute;
-            right: 20px;
-            top: 15px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #111, #222);
         }
 
         /* SEARCH */
-        .search-box {
-            padding: 10px;
+        .search {
             text-align: center;
-            background: white;
+            padding: 15px;
         }
 
         input {
             width: 80%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
         }
 
         /* PRODUCTS */
@@ -54,34 +62,46 @@
         }
 
         .card {
-            background: white;
+            background: #1a1a1a;
             padding: 10px;
             border-radius: 10px;
             text-align: center;
+            transition: 0.3s;
         }
 
-        .card img {
-            width: 100%;
-            border-radius: 10px;
+        .card:hover {
+            transform: scale(1.05);
+            background: #2a2a2a;
         }
 
         .price {
+            color: #00ff99;
             font-weight: bold;
-            margin: 5px 0;
         }
 
         button {
-            background: black;
-            color: white;
-            border: none;
-            padding: 8px;
             width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: none;
             border-radius: 5px;
+            background: white;
             cursor: pointer;
         }
 
         button:hover {
-            background: #333;
+            background: #00ff99;
+        }
+
+        /* CART BOX */
+        .cartBox {
+            position: fixed;
+            right: 10px;
+            top: 70px;
+            background: #111;
+            padding: 10px;
+            width: 200px;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -89,94 +109,74 @@
 <body>
 
 <div class="header">
-    <div class="logo">DMZ Couture 👗</div>
-    <div class="cart">🛒 Cart: <span id="cartCount">0</span></div>
+    <div class="logo">DMZ COUTURE</div>
+    <div class="cart">🛒 <span id="cartCount">0</span></div>
 </div>
 
-<div class="search-box">
+<div class="hero">
+    <h1>Luxury Streetwear Store</h1>
+    <p>Limited Drops • Premium Fashion • DMZ Couture</p>
+</div>
+
+<div class="search">
     <input type="text" id="search" onkeyup="searchProducts()" placeholder="Search products...">
 </div>
 
-<div class="products" id="productList">
+<div class="products" id="productList"></div>
 
-    <div class="card">
-        <img src="hoodie.jpg">
-        <h3>Luxury Hoodie</h3>
-        <p class="price">₦25,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="tee.jpg">
-        <h3>Streetwear Tee</h3>
-        <p class="price">₦10,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="cap.jpg">
-        <h3>Designer Cap</h3>
-        <p class="price">₦7,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="jeans.jpg">
-        <h3>Premium Jeans</h3>
-        <p class="price">₦18,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="jacket.jpg">
-        <h3>DMZ Jacket</h3>
-        <p class="price">₦40,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="tracksuit.jpg">
-        <h3>Street Tracksuit</h3>
-        <p class="price">₦45,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="polo.jpg">
-        <h3>Luxury Polo</h3>
-        <p class="price">₦15,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="hoodie2.jpg">
-        <h3>Oversized Hoodie</h3>
-        <p class="price">₦30,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="shirt.jpg">
-        <h3>Classic Shirt</h3>
-        <p class="price">₦12,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="cargo.jpg">
-        <h3>Street Cargo Pants</h3>
-        <p class="price">₦22,000</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
-
+<div class="cartBox">
+    <h3>Cart</h3>
+    <div id="cartItems">Empty</div>
 </div>
 
 <script>
-let cart = 0;
+let cart = [];
+let products = [
+    "Luxury Hoodie - ₦25,000",
+    "Street Tee - ₦10,000",
+    "Designer Cap - ₦7,000",
+    "Premium Jeans - ₦18,000",
+    "Oversized Hoodie - ₦30,000",
+    "DMZ Jacket - ₦40,000",
+    "Cargo Pants - ₦22,000",
+    "Luxury Polo - ₦15,000",
+    "Tracksuit Set - ₦45,000",
+    "Minimal Tee - ₦9,000",
+    "Urban Hoodie - ₦28,000",
+    "Graphic Sweatshirt - ₦27,000",
+    "Street Cap - ₦8,000",
+    "Black Hoodie - ₦29,000",
+    "White Hoodie - ₦29,000",
+    "Denim Jacket - ₦35,000",
+    "Street Jacket - ₦38,000",
+    "Joggers - ₦20,000",
+    "Luxury Set - ₦50,000",
+    "Streetwear Set - ₦42,000"
+];
 
-function addToCart() {
-    cart++;
-    document.getElementById("cartCount").innerText = cart;
+function loadProducts() {
+    let html = "";
+    products.forEach(p => {
+        html += `
+        <div class="card">
+            <h3>${p}</h3>
+            <button onclick="addToCart('${p}')">Add to Cart</button>
+        </div>
+        `;
+    });
+    document.getElementById("productList").innerHTML = html;
+}
+
+function addToCart(item) {
+    cart.push(item);
+    document.getElementById("cartCount").innerText = cart.length;
+
+    let list = "";
+    cart.forEach(c => {
+        list += "<p>" + c + "</p>";
+    });
+
+    document.getElementById("cartItems").innerHTML = list;
 }
 
 function searchProducts() {
@@ -184,14 +184,12 @@ function searchProducts() {
     let cards = document.getElementsByClassName("card");
 
     for (let i = 0; i < cards.length; i++) {
-        let title = cards[i].getElementsByTagName("h3")[0];
-        if (title.innerText.toLowerCase().includes(input)) {
-            cards[i].style.display = "";
-        } else {
-            cards[i].style.display = "none";
-        }
+        let text = cards[i].innerText.toLowerCase();
+        cards[i].style.display = text.includes(input) ? "" : "none";
     }
 }
+
+loadProducts();
 </script>
 
 </body>
