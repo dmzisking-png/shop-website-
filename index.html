@@ -3,184 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMZ Mart - Shop Everything Online</title>
+    <title>DMZ Mart</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body { font-family: 'Inter', system-ui, sans-serif; }
-        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
     </style>
 </head>
 <body class="bg-gray-50">
-
-    <!-- Top Bar -->
-    <div class="bg-orange-600 text-white py-2 text-center text-sm font-medium">
-        🚚 Free Delivery on Orders Over ₦50,000 | 30 Days Returns
-    </div>
 
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-11 h-11 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-4xl font-bold">D</div>
-                <span class="text-3xl font-bold tracking-tight">DMZ<span class="text-orange-600">Mart</span></span>
+                <span class="text-3xl font-bold">DMZ<span class="text-orange-600">Mart</span></span>
             </div>
-            <div class="flex-1 max-w-xl mx-8">
-                <input type="text" class="w-full border-2 border-gray-300 focus:border-orange-500 rounded-full py-3.5 px-6 outline-none" placeholder="Search for phones, sneakers, laptops...">
-            </div>
-            <div class="flex items-center gap-8 text-2xl">
-                <i class="fas fa-user cursor-pointer hover:text-orange-600"></i>
-                <i class="fas fa-box cursor-pointer hover:text-orange-600"></i>
-                <i onclick="toggleCart()" class="fas fa-shopping-cart cursor-pointer relative hover:text-orange-600">
-                    <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
-                </i>
+            <div class="flex items-center gap-8">
+                <a href="#shop" class="font-medium hover:text-orange-600">Shop</a>
+                <a onclick="showCart()" class="flex items-center gap-2 cursor-pointer hover:text-orange-600">
+                    <i class="fas fa-shopping-cart text-2xl"></i>
+                    <span id="cartCount" class="font-bold">0</span>
+                </a>
             </div>
         </div>
     </header>
 
     <!-- Hero -->
-    <div class="h-[520px] flex items-center text-white hero-bg" 
-         style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/id/1015/2000/800') center/cover;">
-        <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-6xl font-bold leading-none">Shop Big.<br>Save Bigger.</h1>
-            <p class="text-2xl mt-6">Nigeria's No.1 Online Marketplace</p>
-        </div>
+    <div class="bg-gradient-to-r from-orange-600 to-orange-700 text-white py-20 text-center">
+        <h1 class="text-5xl font-bold">Welcome to DMZ Mart</h1>
+        <p class="text-2xl mt-4">Shop Quality Products</p>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 py-12 space-y-16">
-
-        <!-- Flash Sales -->
-        <div>
-            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">🔥 Flash Sales</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="flash-products"></div>
-        </div>
-
-        <!-- Electronics -->
-        <div>
-            <h2 class="text-3xl font-bold mb-8">Electronics</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="electronics-products"></div>
-        </div>
-
-        <!-- Phones -->
-        <div>
-            <h2 class="text-3xl font-bold mb-8">Phones & Tablets</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="phones-products"></div>
-        </div>
-
-        <!-- Computing -->
-        <div>
-            <h2 class="text-3xl font-bold mb-8">Laptops & Computing</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="computing-products"></div>
-        </div>
-
-        <!-- Fashion -->
-        <div>
-            <h2 class="text-3xl font-bold mb-8">Fashion</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="fashion-products"></div>
-        </div>
-
-        <!-- Home & Kitchen -->
-        <div>
-            <h2 class="text-3xl font-bold mb-8">Home & Kitchen</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="home-products"></div>
-        </div>
-
-        <!-- Beauty -->
-        <div>
-            <h2 class="text-3xl font-bold mb-8">Beauty & Personal Care</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="beauty-products"></div>
-        </div>
+    <!-- Products Grid -->
+    <div id="shop" class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-8">Our Products</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="productGrid"></div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-16">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-white text-2xl font-bold mb-2">DMZ Mart</p>
-            <p>© 2026 DMZ Mart. All Rights Reserved.</p>
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl translate-x-full transition-transform z-50 overflow-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Your Cart</h2>
+                <button onclick="hideCart()" class="text-3xl">×</button>
+            </div>
+            <div id="cartContent" class="space-y-6"></div>
+            <div class="mt-8 pt-6 border-t">
+                <div class="flex justify-between text-xl font-bold mb-6">
+                    <span>Total</span>
+                    <span id="cartTotal">₦0</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-orange-600 text-white py-4 rounded-2xl text-lg font-semibold">
+                    Checkout
+                </button>
+            </div>
         </div>
-    </footer>
+    </div>
 
     <script>
-        const productsDB = {
-            flash: [
-                {name:"Samsung Galaxy A35 5G", price:148000, img:"https://i.postimg.cc/XqXKd8HW/IMG-1749.jpg"},
-                {name:"Sony WH-1000XM5 Headphones", price:265000, img:"https://i.postimg.cc/N0fxQB1W/IMG-1750.jpg"},
-                {name:"Nike Dunk Low", price:42500, img:"https://i.postimg.cc/cCQ3QbRP/IMG-1751.jpg"}
-            ],
-            electronics: [
-                {name:"Sony Alpha Camera", price:425000, img:"https://i.postimg.cc/vH2Y0v0t/IMG-1753.jpg"},
-                {name:"JBL Flip 6", price:85000, img:"https://i.postimg.cc/c4PqKkD2/IMG-1754.jpg"},
-                {name:"Xiaomi Smart Watch", price:65000, img:"https://i.postimg.cc/zv9df6zZ/IMG-1755.jpg"},
-                {name:"PlayStation 5", price:650000, img:"https://i.postimg.cc/qqxRBhHp/IMG-1771.jpg"}
-            ],
-            phones: [
-                {name:"iPhone 15 Pro", price:985000, img:"https://i.postimg.cc/s2qKmbWy/IMG-1756.jpg"},
-                {name:"Samsung Galaxy S24 Ultra", price:875000, img:"https://i.postimg.cc/q7PXyyfp/IMG-1757.jpg"},
-                {name:"Google Pixel 8a", price:325000, img:"https://i.postimg.cc/MGVjkL4H/IMG-1758.jpg"},
-                {name:"Tecno Spark 20", price:135000, img:"https://i.postimg.cc/k5mgSg14/IMG-1759.jpg"},
-                {name:"iPhone 16", price:1250000, img:"https://i.postimg.cc/nr2Fbyq3/IMG-1772.jpg"}
-            ],
-            computing: [
-                {name:"Lenovo IdeaPad", price:295000, img:"https://i.postimg.cc/7PGhjd2H/IMG-1761.jpg"}
-            ],
-            fashion: [
-                {name:"Nike Dunk Low", price:42500, img:"https://i.postimg.cc/wj091QmD/IMG-1762.jpg"},
-                {name:"Adidas Samba", price:38500, img:"https://i.postimg.cc/G3FwBj04/IMG-1763.jpg"},
-                {name:"Polo Ralph Lauren Shirt", price:28500, img:"https://i.postimg.cc/yYLG9QLY/IMG-1764.jpg"},
-                {name:"Leather Jacket", price:125000, img:"https://i.postimg.cc/rsFJwcXP/IMG-1765.jpg"}
-            ],
-            home: [
-                {name:"Hisense 7kg Washing Machine", price:285000, img:"https://i.postimg.cc/90MdjpZk/IMG-1766.jpg"},
-                {name:"LG Split Air Conditioner", price:425000, img:"https://i.postimg.cc/90RDpNGc/IMG-1767.png"},
-                {name:"Instant Pot Duo", price:95000, img:"https://i.postimg.cc/yYRjj7XS/IMG-1768.jpg"}
-            ],
-            beauty: [
-                {name:"L'Oréal Hair Oil", price:8500, img:"https://i.postimg.cc/wxmD80tf/IMG-1769.jpg"},
-                {name:"Philips Hair Straightener", price:28500, img:"https://i.postimg.cc/wxLRbMPZ/IMG-1770.jpg"}
-            ]
-        };
+        const products = [
+            { id:1, name:"Samsung Galaxy A35 5G", price:148000, img:"https://i.postimg.cc/XqXKd8HW/IMG-1749.jpg" },
+            { id:2, name:"Sony WH-1000XM5 Headphones", price:265000, img:"https://i.postimg.cc/N0fxQB1W/IMG-1750.jpg" },
+            { id:3, name:"Nike Dunk Low", price:42500, img:"https://i.postimg.cc/wj091QmD/IMG-1762.jpg" },
+            { id:4, name:"Samsung Galaxy S24 Ultra", price:875000, img:"https://i.postimg.cc/q7PXyyfp/IMG-1757.jpg" },
+            { id:5, name:"Adidas Samba", price:38500, img:"https://i.postimg.cc/G3FwBj04/IMG-1763.jpg" },
+            { id:6, name:"Polo Ralph Lauren Shirt", price:28500, img:"https://i.postimg.cc/yYLG9QLY/IMG-1764.jpg" },
+            { id:7, name:"Leather Jacket", price:125000, img:"https://i.postimg.cc/rsFJwcXP/IMG-1765.jpg" },
+            { id:8, name:"PlayStation 5", price:650000, img:"https://i.postimg.cc/qqxRBhHp/IMG-1771.jpg" },
+            { id:9, name:"iPhone 16", price:1250000, img:"https://i.postimg.cc/nr2Fbyq3/IMG-1772.jpg" }
+        ];
 
-        function renderSection(containerId, products) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = products.map(p => `
+        let cart = JSON.parse(localStorage.getItem('dmzCart')) || [];
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(p => `
                 <div class="product-card bg-white rounded-3xl overflow-hidden border">
-                    <img src="${p.img}" class="w-full h-48 object-cover" alt="${p.name}">
-                    <div class="p-4">
-                        <p class="font-medium text-sm line-clamp-2 min-h-[42px]">${p.name}</p>
-                        <p class="text-xl font-bold mt-3">₦${p.price.toLocaleString()}</p>
-                        <button onclick="addToCart('${p.name}', ${p.price}, '${p.img}')" 
-                            class="mt-5 w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-2xl text-sm font-semibold">
-                            Add to Cart
-                        </button>
+                    <img src="${p.img}" class="w-full h-52 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-semibold">${p.name}</h3>
+                        <p class="text-2xl font-bold text-orange-600 mt-2">₦${p.price.toLocaleString()}</p>
+                        <div class="flex gap-3 mt-5">
+                            <button onclick="viewProduct(${p.id})" 
+                                class="flex-1 py-3 border border-orange-600 text-orange-600 rounded-2xl hover:bg-orange-50">
+                                View
+                            </button>
+                            <button onclick="addToCart(${p.id})" 
+                                class="flex-1 bg-orange-600 text-white py-3 rounded-2xl hover:bg-orange-700">
+                                Add
+                            </button>
+                        </div>
                     </div>
                 </div>
             `).join('');
         }
 
-        function renderAll() {
-            renderSection('flash-products', productsDB.flash);
-            renderSection('electronics-products', productsDB.electronics);
-            renderSection('phones-products', productsDB.phones);
-            renderSection('computing-products', productsDB.computing);
-            renderSection('fashion-products', productsDB.fashion);
-            renderSection('home-products', productsDB.home);
-            renderSection('beauty-products', productsDB.beauty);
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) existing.qty += 1;
+            else cart.push({...product, qty: 1});
+
+            localStorage.setItem('dmzCart', JSON.stringify(cart));
+            updateCartCount();
+            alert(product.name + " added to cart!");
         }
 
-        let cart = [];
-        function addToCart(name, price, img) {
-            cart.push({name, price, img, qty: 1});
-            document.getElementById('cartCount').textContent = cart.length;
-            alert(name + " added to cart!");
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').textContent = count;
         }
 
-        function toggleCart() {
-            alert("Cart opened (demo version)");
+        function showCart() {
+            renderCart();
+            document.getElementById('cartSidebar').classList.remove('translate-x-full');
         }
 
-        window.onload = renderAll;
+        function hideCart() {
+            document.getElementById('cartSidebar').classList.add('translate-x-full');
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartContent');
+            let total = 0;
+
+            container.innerHTML = cart.map((item, i) => {
+                total += item.price * item.qty;
+                return `
+                    <div class="flex gap-4">
+                        <img src="${item.img}" class="w-20 h-20 object-cover rounded-2xl">
+                        <div class="flex-1">
+                            <p class="font-medium">${item.name}</p>
+                            <p class="text-orange-600">₦${item.price.toLocaleString()}</p>
+                            <div class="flex gap-4 mt-2">
+                                <button onclick="changeQty(${i}, -1)" class="px-3 border rounded">-</button>
+                                <span>${item.qty}</span>
+                                <button onclick="changeQty(${i}, 1)" class="px-3 border rounded">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${i})" class="text-red-500">×</button>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cartTotal').textContent = `₦${total.toLocaleString()}`;
+        }
+
+        function changeQty(i, delta) {
+            cart[i].qty += delta;
+            if (cart[i].qty < 1) cart.splice(i, 1);
+            localStorage.setItem('dmzCart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+
+        function removeFromCart(i) {
+            cart.splice(i, 1);
+            localStorage.setItem('dmzCart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            alert("🎉 Thank you for shopping at DMZ Mart!");
+            cart = [];
+            localStorage.removeItem('dmzCart');
+            hideCart();
+            updateCartCount();
+        }
+
+        function viewProduct(id) {
+            alert("Product detail page would open here.\n\nYou can expand this later.");
+        }
+
+        // Initialize
+        window.onload = () => {
+            renderProducts();
+            updateCartCount();
+        };
     </script>
 </body>
 </html>
