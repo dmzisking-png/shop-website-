@@ -7,13 +7,22 @@
 body{
 margin:0;
 font-family:Arial;
-background:#f6f6f6;
+background:#f4f4f4;
 color:#111;
+}
+
+/* NAV */
+.nav{
+padding:20px;
+text-align:center;
+font-weight:bold;
+letter-spacing:3px;
+background:white;
 }
 
 /* HERO */
 .hero{
-height:100vh;
+height:90vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -37,57 +46,70 @@ position:relative;
 }
 
 .hero h1{
-font-size:60px;
+font-size:65px;
+margin:0;
 letter-spacing:5px;
 }
 
 .hero p{
 color:#333;
-}
-
-/* HORIZONTAL SCROLL SECTION */
-.section{
-padding:60px 20px;
-}
-
-.title{
-text-align:center;
-font-size:28px;
-margin-bottom:30px;
-}
-
-/* THIS IS THE IMPORTANT PART */
-.scroll-row{
-display:flex;
-overflow-x:auto;
-gap:20px;
-padding:20px;
-scroll-snap-type:x mandatory;
-}
-
-.scroll-row::-webkit-scrollbar{
-display:none;
-}
-
-/* BIG LUXURY CARDS */
-.card{
-min-width:260px;
-height:320px;
-background:white;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-scroll-snap-align:start;
-transition:0.4s;
 font-size:18px;
 }
 
-.card:hover{
-transform:scale(1.08);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
+/* ABOUT */
+.about{
+padding:60px 20px;
+max-width:800px;
+margin:auto;
+text-align:center;
+}
+
+.about h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.about p{
+color:#444;
+line-height:1.6;
+}
+
+/* PRODUCTS (VERTICAL LIST) */
+.products{
+padding:40px 20px;
+}
+
+.products h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+.product-list{
+display:flex;
+flex-direction:column;
+gap:15px;
+max-width:700px;
+margin:auto;
+}
+
+.item{
+background:white;
+padding:20px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.item:hover{
+transform:translateX(5px);
+}
+
+.price{
+color:#00aa66;
+font-weight:bold;
 }
 
 a{
@@ -95,41 +117,67 @@ text-decoration:none;
 color:#111;
 }
 
-.price{
-color:#666;
-margin-top:10px;
+.btn{
+padding:10px 18px;
+background:#111;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#00aa66;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:40px;
+color:#777;
+background:#fff;
 }
 </style>
 </head>
 
 <body>
 
+<div class="nav">DMZ COUTURE</div>
+
 <div class="hero">
 <div class="hero-content">
 <h1>DMZ COUTURE</h1>
-<p>Luxury Streetwear • Modern Fashion</p>
+<p>Luxury Streetwear Brand • Modern Fashion Identity</p>
 </div>
 </div>
 
-<div class="section">
-
-<div class="title">FEATURED DROP → swipe</div>
-
-<div class="scroll-row">
-
-<a href="hoodie.html"><div class="card">Luxury Hoodie<br><div class="price">₦25,000</div></div></a>
-<a href="tee.html"><div class="card">Street Tee<br><div class="price">₦10,000</div></div></a>
-<a href="cap.html"><div class="card">Designer Cap<br><div class="price">₦7,000</div></div></a>
-<a href="jeans.html"><div class="card">Premium Jeans<br><div class="price">₦18,000</div></div></a>
-<a href="jacket.html"><div class="card">DMZ Jacket<br><div class="price">₦40,000</div></div></a>
-
-<a href="hoodie.html"><div class="card">Oversized Hoodie<br><div class="price">₦30,000</div></div></a>
-<a href="tee.html"><div class="card">Minimal Tee<br><div class="price">₦9,000</div></div></a>
-<a href="jacket.html"><div class="card">Street Jacket<br><div class="price">₦38,000</div></div></a>
-
+<div class="about">
+<h2>About Us</h2>
+<p>
+DMZ Couture is a modern streetwear fashion brand built on luxury simplicity, clean design, and premium identity.
+We design clothing for individuals who want to stand out without trying too hard.
+Every piece is crafted with detail, style, and attitude.
+</p>
 </div>
 
+<div class="products">
+<h2>Shop Collection</h2>
+
+<div class="product-list">
+
+<a href="hoodie.html"><div class="item"><span>Luxury Hoodie</span><span class="price">₦25,000</span></div></a>
+<a href="tee.html"><div class="item"><span>Street Tee</span><span class="price">₦10,000</span></div></a>
+<a href="cap.html"><div class="item"><span>Designer Cap</span><span class="price">₦7,000</span></div></a>
+<a href="jeans.html"><div class="item"><span>Premium Jeans</span><span class="price">₦18,000</span></div></a>
+<a href="jacket.html"><div class="item"><span>DMZ Jacket</span><span class="price">₦40,000</span></div></a>
+
 </div>
+</div>
+
+<footer>
+© 2026 DMZ Couture — All Rights Reserved
+</footer>
 
 </body>
 </html>
