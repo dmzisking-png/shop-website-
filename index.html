@@ -9,7 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body { font-family: 'Inter', system-ui, sans-serif; }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        .product-card:hover { transform: translateY(-8px); }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -21,42 +21,41 @@
                 <div class="w-11 h-11 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-4xl font-bold">D</div>
                 <span class="text-3xl font-bold">DMZ<span class="text-orange-600">Mart</span></span>
             </div>
-            <div class="flex items-center gap-8">
-                <a href="#shop" class="font-medium hover:text-orange-600">Shop</a>
-                <a onclick="showCart()" class="flex items-center gap-2 cursor-pointer hover:text-orange-600">
-                    <i class="fas fa-shopping-cart text-2xl"></i>
-                    <span id="cartCount" class="font-bold">0</span>
-                </a>
-            </div>
+            <a onclick="showCart()" class="flex items-center gap-2 cursor-pointer text-xl hover:text-orange-600">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartCount" class="font-bold">0</span>
+            </a>
         </div>
     </header>
 
     <!-- Hero -->
-    <div class="bg-gradient-to-r from-orange-600 to-orange-700 text-white py-20 text-center">
-        <h1 class="text-5xl font-bold">Welcome to DMZ Mart</h1>
-        <p class="text-2xl mt-4">Shop Quality Products</p>
+    <div class="h-80 bg-orange-600 text-white flex items-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-5xl font-bold">DMZ Mart</h1>
+            <p class="text-2xl mt-3">Shop with Confidence</p>
+        </div>
     </div>
 
-    <!-- Products Grid -->
-    <div id="shop" class="max-w-7xl mx-auto px-4 py-12">
-        <h2 class="text-3xl font-bold mb-8">Our Products</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="productGrid"></div>
+    <!-- Products -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-8">All Products</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="products"></div>
     </div>
 
     <!-- Cart Sidebar -->
-    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl translate-x-full transition-transform z-50 overflow-auto">
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl translate-x-full transition-all z-50 overflow-auto">
         <div class="p-6">
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex justify-between mb-6">
                 <h2 class="text-2xl font-bold">Your Cart</h2>
-                <button onclick="hideCart()" class="text-3xl">×</button>
+                <button onclick="hideCart()" class="text-4xl leading-none">×</button>
             </div>
-            <div id="cartContent" class="space-y-6"></div>
-            <div class="mt-8 pt-6 border-t">
-                <div class="flex justify-between text-xl font-bold mb-6">
+            <div id="cartList" class="space-y-6"></div>
+            <div class="mt-10 border-t pt-6">
+                <div class="flex justify-between text-2xl font-bold">
                     <span>Total</span>
-                    <span id="cartTotal">₦0</span>
+                    <span id="totalPrice">₦0</span>
                 </div>
-                <button onclick="checkout()" class="w-full bg-orange-600 text-white py-4 rounded-2xl text-lg font-semibold">
+                <button onclick="checkout()" class="w-full mt-6 py-4 bg-orange-600 text-white rounded-3xl text-lg font-semibold">
                     Checkout
                 </button>
             </div>
@@ -67,33 +66,38 @@
         const products = [
             { id:1, name:"Samsung Galaxy A35 5G", price:148000, img:"https://i.postimg.cc/XqXKd8HW/IMG-1749.jpg" },
             { id:2, name:"Sony WH-1000XM5 Headphones", price:265000, img:"https://i.postimg.cc/N0fxQB1W/IMG-1750.jpg" },
-            { id:3, name:"Nike Dunk Low", price:42500, img:"https://i.postimg.cc/wj091QmD/IMG-1762.jpg" },
+            { id:3, name:"Nike Dunk Low", price:42500, img:"https://i.postimg.cc/cCQ3QbRP/IMG-1751.jpg" },
             { id:4, name:"Samsung Galaxy S24 Ultra", price:875000, img:"https://i.postimg.cc/q7PXyyfp/IMG-1757.jpg" },
-            { id:5, name:"Adidas Samba", price:38500, img:"https://i.postimg.cc/G3FwBj04/IMG-1763.jpg" },
-            { id:6, name:"Polo Ralph Lauren Shirt", price:28500, img:"https://i.postimg.cc/yYLG9QLY/IMG-1764.jpg" },
-            { id:7, name:"Leather Jacket", price:125000, img:"https://i.postimg.cc/rsFJwcXP/IMG-1765.jpg" },
-            { id:8, name:"PlayStation 5", price:650000, img:"https://i.postimg.cc/qqxRBhHp/IMG-1771.jpg" },
-            { id:9, name:"iPhone 16", price:1250000, img:"https://i.postimg.cc/nr2Fbyq3/IMG-1772.jpg" }
+            { id:5, name:"Google Pixel 8a", price:325000, img:"https://i.postimg.cc/MGVjkL4H/IMG-1758.jpg" },
+            { id:6, name:"Tecno Spark 20", price:135000, img:"https://i.postimg.cc/k5mgSg14/IMG-1759.jpg" },
+            { id:7, name:"Lenovo IdeaPad", price:295000, img:"https://i.postimg.cc/7PGhjd2H/IMG-1761.jpg" },
+            { id:8, name:"Nike Dunk Low", price:42500, img:"https://i.postimg.cc/wj091QmD/IMG-1762.jpg" },
+            { id:9, name:"Adidas Samba", price:38500, img:"https://i.postimg.cc/G3FwBj04/IMG-1763.jpg" },
+            { id:10, name:"Polo Ralph Lauren Shirt", price:28500, img:"https://i.postimg.cc/yYLG9QLY/IMG-1764.jpg" },
+            { id:11, name:"Leather Jacket", price:125000, img:"https://i.postimg.cc/rsFJwcXP/IMG-1765.jpg" },
+            { id:12, name:"Hisense 7kg Washing Machine", price:285000, img:"https://i.postimg.cc/90MdjpZk/IMG-1766.jpg" },
+            { id:13, name:"LG Split AC", price:425000, img:"https://i.postimg.cc/90RDpNGc/IMG-1767.png" },
+            { id:14, name:"Instant Pot Duo", price:95000, img:"https://i.postimg.cc/yYRjj7XS/IMG-1768.jpg" },
+            { id:15, name:"L'Oréal Hair Oil", price:8500, img:"https://i.postimg.cc/wxmD80tf/IMG-1769.jpg" },
+            { id:16, name:"Philips Hair Straightener", price:28500, img:"https://i.postimg.cc/wxLRbMPZ/IMG-1770.jpg" },
+            { id:17, name:"PlayStation 5", price:650000, img:"https://i.postimg.cc/qqxRBhHp/IMG-1771.jpg" },
+            { id:18, name:"iPhone 16", price:1250000, img:"https://i.postimg.cc/nr2Fbyq3/IMG-1772.jpg" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('dmzCart')) || [];
 
         function renderProducts() {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = products.map(p => `
+            const container = document.getElementById('products');
+            container.innerHTML = products.map(p => `
                 <div class="product-card bg-white rounded-3xl overflow-hidden border">
                     <img src="${p.img}" class="w-full h-52 object-cover">
                     <div class="p-5">
-                        <h3 class="font-semibold">${p.name}</h3>
-                        <p class="text-2xl font-bold text-orange-600 mt-2">₦${p.price.toLocaleString()}</p>
-                        <div class="flex gap-3 mt-5">
-                            <button onclick="viewProduct(${p.id})" 
-                                class="flex-1 py-3 border border-orange-600 text-orange-600 rounded-2xl hover:bg-orange-50">
-                                View
-                            </button>
+                        <h3 class="font-medium leading-tight">${p.name}</h3>
+                        <p class="text-2xl font-bold text-orange-600 mt-3">₦${p.price.toLocaleString()}</p>
+                        <div class="mt-5 flex gap-3">
                             <button onclick="addToCart(${p.id})" 
-                                class="flex-1 bg-orange-600 text-white py-3 rounded-2xl hover:bg-orange-700">
-                                Add
+                                class="flex-1 bg-orange-600 text-white py-3 rounded-2xl text-sm font-semibold">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -105,15 +109,15 @@
             const product = products.find(p => p.id === id);
             const existing = cart.find(item => item.id === id);
             if (existing) existing.qty += 1;
-            else cart.push({...product, qty: 1});
+            else cart.push({ ...product, qty: 1 });
 
             localStorage.setItem('dmzCart', JSON.stringify(cart));
             updateCartCount();
-            alert(product.name + " added to cart!");
+            alert(`${product.name} added to cart!`);
         }
 
         function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            const count = cart.reduce((a, b) => a + b.qty, 0);
             document.getElementById('cartCount').textContent = count;
         }
 
@@ -127,41 +131,47 @@
         }
 
         function renderCart() {
-            const container = document.getElementById('cartContent');
+            const container = document.getElementById('cartList');
             let total = 0;
 
-            container.innerHTML = cart.map((item, i) => {
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-center py-10 text-gray-500">Cart is empty</p>`;
+                document.getElementById('totalPrice').textContent = '₦0';
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => {
                 total += item.price * item.qty;
                 return `
-                    <div class="flex gap-4">
-                        <img src="${item.img}" class="w-20 h-20 object-cover rounded-2xl">
+                    <div class="flex gap-4 bg-gray-50 p-4 rounded-2xl">
+                        <img src="${item.img}" class="w-20 h-20 object-cover rounded-xl">
                         <div class="flex-1">
                             <p class="font-medium">${item.name}</p>
-                            <p class="text-orange-600">₦${item.price.toLocaleString()}</p>
-                            <div class="flex gap-4 mt-2">
-                                <button onclick="changeQty(${i}, -1)" class="px-3 border rounded">-</button>
+                            <p class="text-orange-600">₦${(item.price * item.qty).toLocaleString()}</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <button onclick="changeQty(${index}, -1)" class="w-7 h-7 border rounded-lg">-</button>
                                 <span>${item.qty}</span>
-                                <button onclick="changeQty(${i}, 1)" class="px-3 border rounded">+</button>
+                                <button onclick="changeQty(${index}, 1)" class="w-7 h-7 border rounded-lg">+</button>
                             </div>
                         </div>
-                        <button onclick="removeFromCart(${i})" class="text-red-500">×</button>
+                        <button onclick="removeItem(${index})" class="text-red-500 text-2xl">×</button>
                     </div>
                 `;
             }).join('');
 
-            document.getElementById('cartTotal').textContent = `₦${total.toLocaleString()}`;
+            document.getElementById('totalPrice').textContent = `₦${total.toLocaleString()}`;
         }
 
-        function changeQty(i, delta) {
-            cart[i].qty += delta;
-            if (cart[i].qty < 1) cart.splice(i, 1);
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty < 1) cart.splice(index, 1);
             localStorage.setItem('dmzCart', JSON.stringify(cart));
             renderCart();
             updateCartCount();
         }
 
-        function removeFromCart(i) {
-            cart.splice(i, 1);
+        function removeItem(index) {
+            cart.splice(index, 1);
             localStorage.setItem('dmzCart', JSON.stringify(cart));
             renderCart();
             updateCartCount();
@@ -169,15 +179,11 @@
 
         function checkout() {
             if (cart.length === 0) return;
-            alert("🎉 Thank you for shopping at DMZ Mart!");
+            alert("🎉 Thank you for your order at DMZ Mart!");
             cart = [];
             localStorage.removeItem('dmzCart');
             hideCart();
             updateCartCount();
-        }
-
-        function viewProduct(id) {
-            alert("Product detail page would open here.\n\nYou can expand this later.");
         }
 
         // Initialize
