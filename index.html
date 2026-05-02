@@ -10,21 +10,21 @@ font-family:Arial;
 background:#f4f6f8;
 }
 
-/* TOP NAV */
+/* NAV */
 .nav{
 background:#f68b1e;
 color:white;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 20px;
+padding:18px 20px;
 position:sticky;
 top:0;
 z-index:10;
 }
 
 .logo{
-font-size:22px;
+font-size:24px;
 font-weight:bold;
 }
 
@@ -35,32 +35,33 @@ margin:0 15px;
 
 .search input{
 width:100%;
-padding:10px;
+padding:12px;
 border:none;
-border-radius:5px;
+border-radius:6px;
+font-size:16px;
 }
 
-/* CATEGORY BAR */
+/* CATEGORY */
 .categories{
 display:flex;
 overflow-x:auto;
 gap:10px;
-padding:10px;
+padding:12px;
 background:white;
 }
 
 .cat{
-padding:10px 15px;
+padding:12px 18px;
 background:#eee;
-border-radius:20px;
+border-radius:25px;
 white-space:nowrap;
-font-size:14px;
+font-size:15px;
 cursor:pointer;
 }
 
 /* BANNER */
 .banner{
-height:260px;
+height:300px;
 background:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');
 background-size:cover;
 background-position:center;
@@ -68,32 +69,33 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:white;
-font-size:32px;
+font-size:36px;
 font-weight:bold;
 text-align:center;
 }
 
 /* SECTION */
 .section-title{
-padding:15px;
-font-size:18px;
+padding:18px;
+font-size:22px;
 font-weight:bold;
 }
 
-/* GRID */
+/* GRID (BIGGER CARDS) */
 .grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:10px;
-padding:10px;
+gap:15px;
+padding:15px;
 }
 
+/* CARD BIGGER */
 .card{
 background:white;
-border-radius:8px;
+border-radius:10px;
 overflow:hidden;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-transition:0.2s;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+transition:0.3s;
 }
 
 .card:hover{
@@ -102,19 +104,20 @@ transform:scale(1.03);
 
 .card img{
 width:100%;
-height:160px;
+height:220px; /* 🔥 BIGGER IMAGE */
 object-fit:cover;
 }
 
 .card h3{
-font-size:14px;
-margin:8px;
+margin:10px;
+font-size:16px;
 }
 
 .price{
+margin:0 10px 12px;
 color:green;
 font-weight:bold;
-margin:0 8px 10px;
+font-size:16px;
 }
 </style>
 </head>
@@ -123,43 +126,44 @@ margin:0 8px 10px;
 
 <!-- NAV -->
 <div class="nav">
-<div class="logo">DMZ</div>
+<div class="logo">DMZ MART</div>
 
 <div class="search">
-<input type="text" placeholder="Search products...">
+<input type="text" placeholder="Search products, brands and categories">
 </div>
 
 <div>🛒</div>
 </div>
 
-<!-- CATEGORIES -->
+<!-- CATEGORY -->
 <div class="categories">
 <div class="cat">Phones</div>
 <div class="cat">Laptops</div>
 <div class="cat">TVs</div>
 <div class="cat">Gaming</div>
-<div class="cat">Fashion</div>
 <div class="cat">Home</div>
+<div class="cat">Audio</div>
+<div class="cat">Fashion</div>
 </div>
 
 <!-- BANNER -->
 <div class="banner">
-Mega Deals • Up to 70% Off
+BIG SALE • ELECTRONICS • GAMING • HOME DEALS
 </div>
 
-<!-- FLASH SALES -->
-<div class="section-title">Flash Sales</div>
+<!-- FLASH -->
+<div class="section-title">⚡ Flash Deals</div>
 <div class="grid">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<h3>iPhone 15 Pro</h3>
-<div class="price">₦1,200,000</div>
+<h3>iPhone 15 Pro Max</h3>
+<div class="price">₦1,350,000</div>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>MacBook Pro</h3>
+<h3>MacBook Pro M3</h3>
 <div class="price">₦1,800,000</div>
 </div>
 
@@ -173,6 +177,102 @@ Mega Deals • Up to 70% Off
 <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
 <h3>AirPods Pro</h3>
 <div class="price">₦180,000</div>
+</div>
+
+</div>
+
+<!-- PHONES -->
+<div class="section-title">📱 Phones</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>iPhone 14 Pro</h3>
+<div class="price">₦950,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<h3>Samsung S24 Ultra</h3>
+<div class="price">₦1,100,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97">
+<h3>Google Pixel 8</h3>
+<div class="price">₦700,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e">
+<h3>Infinix Zero 30</h3>
+<div class="price">₦350,000</div>
+</div>
+
+</div>
+
+<!-- LAPTOPS -->
+<div class="section-title">💻 Laptops</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
+<h3>Dell XPS 15</h3>
+<div class="price">₦1,300,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>MacBook Air M2</h3>
+<div class="price">₦1,200,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc">
+<h3>HP Pavilion</h3>
+<div class="price">₦650,000</div>
+</div>
+
+</div>
+
+<!-- GAMING -->
+<div class="section-title">🎮 Gaming</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PS5 Console</h3>
+<div class="price">₦750,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
+<h3>Xbox Series X</h3>
+<div class="price">₦720,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1587202372775-98927f9e2f47">
+<h3>Gaming Chair</h3>
+<div class="price">₦250,000</div>
+</div>
+
+</div>
+
+<!-- HOME -->
+<div class="section-title">🏠 Home Appliances</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d">
+<h3>Washing Machine</h3>
+<div class="price">₦480,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585238342028-4c7f3b2c8b12">
+<h3>Smart Fridge</h3>
+<div class="price">₦900,000</div>
 </div>
 
 </div>
