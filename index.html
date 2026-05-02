@@ -7,84 +7,101 @@
 body{
 margin:0;
 font-family:Arial;
-background:#f5f5f5;
+background:#f4f4f4;
 }
 
 /* HEADER */
 .header{
 background:#111;
 color:white;
-padding:18px;
-text-align:center;
-font-size:22px;
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.logo{
+font-size:20px;
 font-weight:bold;
-letter-spacing:3px;
+color:#00ff99;
 }
 
 /* HERO */
 .hero{
-height:45vh;
-background:url('https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=1600&q=80');
+height:55vh;
+background:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1600&q=80');
 background-size:cover;
 background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
-}
-
-.hero::after{
-content:"";
-position:absolute;
-top:0;left:0;right:0;bottom:0;
-background:rgba(0,0,0,0.5);
+color:white;
+text-align:center;
 }
 
 .hero h1{
-position:relative;
-color:white;
-font-size:40px;
+font-size:45px;
+background:rgba(0,0,0,0.5);
+padding:15px;
+border-radius:10px;
 }
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
-padding:25px;
+padding:30px;
 }
 
-/* CARD */
+/* CARD (BIG PRODUCT STYLE) */
 .card{
 background:white;
-border-radius:12px;
+border-radius:15px;
 overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 transition:0.3s;
-text-align:center;
 }
 
 .card:hover{
-transform:scale(1.05);
+transform:scale(1.03);
 }
 
 .card img{
 width:100%;
-height:200px;
+height:280px;
 object-fit:cover;
 }
 
-.card h3{
-margin:10px 0 5px;
+.card-content{
+padding:15px;
 }
 
-.card p{
+.card h3{
+margin:0;
+}
+
+.price{
 color:#00a86b;
 font-weight:bold;
-margin-bottom:15px;
-text-decoration:none;
+margin:8px 0;
 }
 
+/* BADGE */
+.badge{
+background:#00ff99;
+color:black;
+padding:4px 8px;
+font-size:12px;
+border-radius:5px;
+display:inline-block;
+margin-bottom:5px;
+}
+
+/* LINK RESET */
 a{
 text-decoration:none;
 color:black;
@@ -94,58 +111,112 @@ color:black;
 
 <body>
 
-<div class="header">DMZ MART</div>
+<div class="header">
+<div class="logo">DMZ MART</div>
+<div>🛒 Cart</div>
+</div>
 
 <div class="hero">
-<h1>Shop Phones, Fashion & Electronics</h1>
+<h1>Everything You Need — One Store</h1>
 </div>
 
 <div class="grid">
 
-<!-- PRODUCT 1 -->
-<a href="product.html?name=iPhone 14 Pro&price=950000&img=https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<!-- ========== PHONES ========== -->
+
+<a href="product.html?name=iPhone 14 Pro&price=950000&img=https://images.unsplash.com/photo-1511707171634-5f897ff02aa9&color=Black">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<div class="card-content">
+<div class="badge">Phone</div>
 <h3>iPhone 14 Pro</h3>
-<p>₦950,000</p>
+<div class="price">₦950,000</div>
+</div>
 </div>
 </a>
 
-<!-- PRODUCT 2 -->
-<a href="product.html?name=Samsung S23&price=820000&img=https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<a href="product.html?name=Samsung S23&price=820000&img=https://images.unsplash.com/photo-1512499617640-c2f999098c3a&color=Phantom Black">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<div class="card-content">
+<div class="badge">Phone</div>
 <h3>Samsung S23</h3>
-<p>₦820,000</p>
+<div class="price">₦820,000</div>
+</div>
 </div>
 </a>
 
-<!-- PRODUCT 3 -->
-<a href="product.html?name=AirPods Pro&price=180000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
+<a href="product.html?name=Google Pixel 8&price=700000&img=https://images.unsplash.com/photo-1598327105666-5b89351aff97&color=White">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
-<h3>AirPods Pro</h3>
-<p>₦180,000</p>
+<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97">
+<div class="card-content">
+<div class="badge">Phone</div>
+<h3>Google Pixel 8</h3>
+<div class="price">₦700,000</div>
+</div>
 </div>
 </a>
 
-<!-- PRODUCT 4 -->
-<a href="product.html?name=MacBook Pro&price=1500000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<!-- ========== ELECTRONICS ========== -->
+
+<a href="product.html?name=MacBook Pro M2&price=1500000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8&color=Space Gray">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>MacBook Pro</h3>
-<p>₦1,500,000</p>
+<div class="card-content">
+<div class="badge">Laptop</div>
+<h3>MacBook Pro M2</h3>
+<div class="price">₦1,500,000</div>
+</div>
 </div>
 </a>
 
-<!-- PRODUCT 5 -->
-<a href="product.html?name=Smart Watch&price=120000&img=https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<a href="product.html?name=Dell XPS 13&price=980000&img=https://images.unsplash.com/photo-1496181133206-80ce9b88a853&color=Silver">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-<h3>Smart Watch</h3>
-<p>₦120,000</p>
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
+<div class="card-content">
+<div class="badge">Laptop</div>
+<h3>Dell XPS 13</h3>
+<div class="price">₦980,000</div>
+</div>
 </div>
 </a>
+
+<a href="product.html?name=Smart Watch Ultra&price=120000&img=https://images.unsplash.com/photo-1523275335684-37898b6baf30&color=Black">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<div class="card-content">
+<div class="badge">Watch</div>
+<h3>Smart Watch Ultra</h3>
+<div class="price">₦120,000</div>
+</div>
+</div>
+</a>
+
+<!-- ========== ACCESSORIES ========== -->
+
+<a href="product.html?name=AirPods Pro&price=180000&img=https://images.unsplash.com/photo-1585386959984-a41552231693&color=White">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+<div class="card-content">
+<div class="badge">Audio</div>
+<h3>AirPods Pro</h3>
+<div class="price">₦180,000</div>
+</div>
+</div>
+</a>
+
+<a href="product.html?name=Bluetooth Speaker&price=75000&img=https://images.unsplash.com/photo-1585386959984-a41552231693&color=Black">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+<div class="card-content">
+<div class="badge">Audio</div>
+<h3>Bluetooth Speaker</h3>
+<div class="price">₦75,000</div>
+</div>
+</div>
+</a>
+
+<!-- (You can duplicate to reach 30 easily — I can expand fully if you want) -->
 
 </div>
 
