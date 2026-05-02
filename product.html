@@ -1,97 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Product</title>
-
 <style>
-body{
-margin:0;
-font-family:Arial;
-background:#f1f3f6;
-}
+body{font-family:Arial;background:#f1f3f6;margin:0;}
 
 .container{
 max-width:900px;
-margin:30px auto;
+margin:40px auto;
 background:white;
-padding:20px;
+padding:25px;
 display:flex;
-gap:20px;
-border-radius:10px;
+gap:25px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
 img{
-width:350px;
+width:400px;
 border-radius:10px;
 }
 
+h2{font-size:28px;}
+
 .price{
+font-size:26px;
 color:#00a86b;
-font-size:24px;
 }
 
 button{
-padding:12px;
+padding:14px;
+width:100%;
+font-size:16px;
 background:#111;
 color:white;
 border:none;
-border-radius:20px;
-width:100%;
+border-radius:25px;
 cursor:pointer;
 }
-
-button:hover{
-background:#00a86b;
-}
 </style>
-</head>
-
-<body>
-
-<div class="container">
-
-<img id="img">
-
-<div>
-<h2 id="name"></h2>
-<div class="price" id="price"></div>
-
-<select id="color">
-<option>Black</option>
-<option>White</option>
-<option>Blue</option>
-</select>
-
-<button onclick="add()">Add to Cart</button>
-</div>
-
-</div>
-
-<script>
-let p=new URLSearchParams(window.location.search);
-
-let name=p.get("name");
-let price=p.get("price");
-let img=p.get("img");
-
-document.getElementById("name").innerText=name;
-document.getElementById("price").innerText="₦"+price;
-document.getElementById("img").src=img;
-
-function add(){
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
-
-cart.push({
-name:name,
-price:price,
-color:document.getElementById("color").value
-});
-
-localStorage.setItem("cart",JSON.stringify(cart));
-
-alert("Added!");
-}
-</script>
-
-</body>
-</html>
