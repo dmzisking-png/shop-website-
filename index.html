@@ -17,51 +17,51 @@ color:white;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 30px;
+padding:22px 30px;
 position:sticky;
 top:0;
 z-index:10;
 }
 
 .logo{
-font-size:26px;
+font-size:30px; /* 🔥 BIGGER */
 font-weight:bold;
 }
 
 .search{
 flex:1;
-margin:0 25px;
+margin:0 30px;
 }
 
 .search input{
 width:100%;
-padding:14px;
+padding:18px; /* 🔥 BIG INPUT */
+font-size:18px;
 border:none;
-border-radius:6px;
-font-size:16px;
+border-radius:8px;
 }
 
 /* CATEGORY */
 .categories{
 display:flex;
-gap:12px;
+gap:15px;
 overflow-x:auto;
-padding:15px 30px;
+padding:18px 30px;
 background:white;
 }
 
 .cat{
-padding:14px 22px;
+padding:16px 26px;
 background:#eee;
-border-radius:30px;
+border-radius:35px;
+font-size:18px;
 white-space:nowrap;
-font-size:16px;
 cursor:pointer;
 }
 
-/* HERO (BIGGER) */
+/* HERO (VERY BIG) */
 .banner{
-height:420px;
+height:500px; /* 🔥 HUGE */
 background:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');
 background-size:cover;
 background-position:center;
@@ -69,66 +69,66 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:white;
-font-size:46px;
+font-size:60px; /* 🔥 BIG TEXT */
 font-weight:bold;
 text-align:center;
-padding:20px;
+padding:30px;
 }
 
-/* SECTION TITLE */
+/* SECTION TITLE (BIG LIKE BILLBOARD) */
 .section-title{
-padding:25px 35px;
-font-size:28px;
+padding:30px 40px;
+font-size:32px; /* 🔥 BIG TITLE */
 font-weight:bold;
 }
 
-/* GRID (WIDER CARDS) */
+/* GRID (LESS COLUMNS = BIGGER CARDS) */
 .grid{
 display:grid;
-grid-template-columns:repeat(4,1fr); /* 🔥 WIDE DESKTOP STYLE */
-gap:25px;
-padding:20px 35px 60px;
+grid-template-columns:repeat(2,1fr); /* 🔥 BIG DISPLAY */
+gap:30px;
+padding:20px 40px 70px;
 }
 
-/* PRODUCT CARD (BIG NOW) */
+/* PRODUCT CARD (VERY BIG) */
 .card{
 background:white;
-border-radius:14px;
+border-radius:18px;
 overflow:hidden;
-box-shadow:0 8px 25px rgba(0,0,0,0.1);
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:scale(1.03);
 }
 
 .card img{
 width:100%;
-height:320px; /* 🔥 BIG IMAGE */
+height:450px; /* 🔥 VERY BIG IMAGE */
 object-fit:cover;
 }
 
 .card h3{
-margin:12px;
-font-size:18px;
+margin:15px;
+font-size:26px; /* 🔥 BIG TEXT */
 }
 
 .price{
-margin:0 12px 18px;
-font-size:18px;
+margin:0 15px 20px;
+font-size:24px; /* 🔥 BIG PRICE */
 font-weight:bold;
 color:#00a86b;
 }
 
-/* RESPONSIVE (MOBILE FIX) */
+/* RESPONSIVE */
 @media(max-width:900px){
 .grid{
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:1fr;
 }
 .banner{
-font-size:30px;
-height:300px;
+font-size:36px;
+height:350px;
 }
 }
 </style>
@@ -136,15 +136,14 @@ height:300px;
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
 <div class="logo">DMZ MART</div>
 
 <div class="search">
-<input placeholder="Search products, brands, categories...">
+<input placeholder="Search products, brands, deals...">
 </div>
 
-<div>🛒 Cart</div>
+<div style="font-size:22px;">🛒 Cart</div>
 </div>
 
 <!-- CATEGORY -->
@@ -155,12 +154,12 @@ height:300px;
 <div class="cat">Gaming</div>
 <div class="cat">Home</div>
 <div class="cat">Audio</div>
-<div class="cat">Accessories</div>
+<div class="cat">Smart Tech</div>
 </div>
 
 <!-- HERO -->
 <div class="banner">
-MEGA ELECTRONICS STORE • BIG DEALS • PREMIUM BRANDS
+MEGA ELECTRONICS MEGASTORE • BIG DEALS • PREMIUM BRANDS
 </div>
 
 <!-- FLASH -->
@@ -179,27 +178,15 @@ MEGA ELECTRONICS STORE • BIG DEALS • PREMIUM BRANDS
 <div class="price">₦1,800,000</div>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<h3>PlayStation 5</h3>
-<div class="price">₦750,000</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
-<h3>AirPods Pro</h3>
-<div class="price">₦180,000</div>
-</div>
-
 </div>
 
 <!-- PHONES -->
-<div class="section-title">📱 Phones</div>
+<div class="section-title">📱 Smartphones</div>
 <div class="grid">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<h3>iPhone 14 Pro</h3>
+<h3>iPhone 14 Pro Max</h3>
 <div class="price">₦950,000</div>
 </div>
 
@@ -211,25 +198,25 @@ MEGA ELECTRONICS STORE • BIG DEALS • PREMIUM BRANDS
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97">
-<h3>Google Pixel 8</h3>
+<h3>Google Pixel 8 Pro</h3>
 <div class="price">₦700,000</div>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e">
-<h3>Infinix Zero 30</h3>
+<h3>Infinix Zero Ultra</h3>
 <div class="price">₦350,000</div>
 </div>
 
 </div>
 
 <!-- GAMING -->
-<div class="section-title">🎮 Gaming</div>
+<div class="section-title">🎮 Gaming Zone</div>
 <div class="grid">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<h3>PS5 Console</h3>
+<h3>PlayStation 5</h3>
 <div class="price">₦750,000</div>
 </div>
 
@@ -239,16 +226,22 @@ MEGA ELECTRONICS STORE • BIG DEALS • PREMIUM BRANDS
 <div class="price">₦720,000</div>
 </div>
 
+</div>
+
+<!-- HOME -->
+<div class="section-title">🏠 Home Appliances</div>
+<div class="grid">
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1587202372775-98927f9e2f47">
-<h3>Gaming Chair</h3>
-<div class="price">₦250,000</div>
+<img src="https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d">
+<h3>Washing Machine</h3>
+<div class="price">₦480,000</div>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>Gaming Keyboard</h3>
-<div class="price">₦45,000</div>
+<img src="https://images.unsplash.com/photo-1585238342028-4c7f3b2c8b12">
+<h3>Smart Fridge</h3>
+<div class="price">₦900,000</div>
 </div>
 
 </div>
