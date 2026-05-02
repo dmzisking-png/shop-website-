@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DMZ Mart Mega Store</title>
+<title>DMZ Mart</title>
 
 <style>
 body{
@@ -10,125 +10,156 @@ font-family:Arial;
 background:#f4f6f8;
 }
 
-/* TOP BAR */
-.topbar{
-background:#111;
+/* TOP NAV */
+.nav{
+background:#f68b1e;
 color:white;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 22px;
+padding:15px 20px;
 position:sticky;
 top:0;
 z-index:10;
 }
 
 .logo{
-color:#00ff99;
-font-size:26px;
+font-size:22px;
 font-weight:bold;
 }
 
-.cart{
-background:#00ff99;
-color:#111;
-padding:10px 16px;
-border-radius:25px;
-font-weight:bold;
+.search{
+flex:1;
+margin:0 15px;
 }
 
-/* HERO */
-.hero{
-height:340px;
+.search input{
+width:100%;
+padding:10px;
+border:none;
+border-radius:5px;
+}
+
+/* CATEGORY BAR */
+.categories{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:10px;
+background:white;
+}
+
+.cat{
+padding:10px 15px;
+background:#eee;
+border-radius:20px;
+white-space:nowrap;
+font-size:14px;
+cursor:pointer;
+}
+
+/* BANNER */
+.banner{
+height:260px;
+background:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');
+background-size:cover;
+background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
 color:white;
-font-size:42px;
+font-size:32px;
 font-weight:bold;
-background-size:cover;
-background-position:center;
-animation:slide 12s infinite;
+text-align:center;
 }
 
-@keyframes slide{
-0%{background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');}
-50%{background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');}
-100%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
-}
-
-/* SECTION TITLE */
+/* SECTION */
 .section-title{
-padding:18px 25px;
-font-size:24px;
+padding:15px;
+font-size:18px;
 font-weight:bold;
 }
 
-/* GRID (CLEAN, NOT JAMMED) */
+/* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
-padding:20px 25px 40px;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+padding:10px;
 }
 
-/* PRODUCT CARD */
 .card{
 background:white;
-border-radius:14px;
+border-radius:8px;
 overflow:hidden;
-box-shadow:0 6px 18px rgba(0,0,0,0.08);
-transition:0.25s;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+transition:0.2s;
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:scale(1.03);
 }
 
 .card img{
 width:100%;
-height:240px;
+height:160px;
 object-fit:cover;
 }
 
 .card h3{
-margin:10px;
-font-size:17px;
+font-size:14px;
+margin:8px;
 }
 
 .price{
-margin:0 10px 15px;
-color:#00a86b;
-font-size:17px;
+color:green;
 font-weight:bold;
+margin:0 8px 10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-<div class="logo">DMZ MART</div>
-<a href="cart.html" class="cart">🛒 Cart</a>
+<!-- NAV -->
+<div class="nav">
+<div class="logo">DMZ</div>
+
+<div class="search">
+<input type="text" placeholder="Search products...">
 </div>
 
-<div class="hero">
-YOUR PREMIUM ELECTRONICS MARKETPLACE
+<div>🛒</div>
 </div>
 
-<div class="section-title">⚡ Flash Deals</div>
+<!-- CATEGORIES -->
+<div class="categories">
+<div class="cat">Phones</div>
+<div class="cat">Laptops</div>
+<div class="cat">TVs</div>
+<div class="cat">Gaming</div>
+<div class="cat">Fashion</div>
+<div class="cat">Home</div>
+</div>
+
+<!-- BANNER -->
+<div class="banner">
+Mega Deals • Up to 70% Off
+</div>
+
+<!-- FLASH SALES -->
+<div class="section-title">Flash Sales</div>
 <div class="grid">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<h3>iPhone 15 Pro Max</h3>
-<div class="price">₦1,350,000</div>
+<h3>iPhone 15 Pro</h3>
+<div class="price">₦1,200,000</div>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>MacBook Pro M3</h3>
+<h3>MacBook Pro</h3>
 <div class="price">₦1,800,000</div>
 </div>
 
@@ -142,74 +173,6 @@ YOUR PREMIUM ELECTRONICS MARKETPLACE
 <img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
 <h3>AirPods Pro</h3>
 <div class="price">₦180,000</div>
-</div>
-
-</div>
-
-<div class="section-title">📱 Phones</div>
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<h3>iPhone 14 Pro</h3>
-<div class="price">₦950,000</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
-<h3>Samsung S24 Ultra</h3>
-<div class="price">₦1,100,000</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97">
-<h3>Google Pixel 8</h3>
-<div class="price">₦700,000</div>
-</div>
-
-</div>
-
-<div class="section-title">💻 Laptops</div>
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>MacBook Air M2</h3>
-<div class="price">₦1,200,000</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
-<h3>Dell XPS 15</h3>
-<div class="price">₦1,300,000</div>
-</div>
-
-</div>
-
-<div class="section-title">🎮 Gaming</div>
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<h3>PlayStation 5</h3>
-<div class="price">₦750,000</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
-<h3>Xbox Series X</h3>
-<div class="price">₦720,000</div>
-</div>
-
-</div>
-
-<div class="section-title">🏠 Home Appliances</div>
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d">
-<h3>Washing Machine</h3>
-<div class="price">₦480,000</div>
 </div>
 
 </div>
