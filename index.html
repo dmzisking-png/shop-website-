@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DMZ Couture</title>
+<title>DMZ Mart</title>
 
 <style>
 body{
@@ -12,19 +12,19 @@ background:#f5f5f5;
 
 /* HEADER */
 .header{
-background:white;
+background:#111;
+color:white;
 padding:18px;
 text-align:center;
 font-size:22px;
 font-weight:bold;
 letter-spacing:3px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* HERO */
 .hero{
-height:55vh;
-background:url('https://images.unsplash.com/photo-1520975922203-b3f7c3f4f1f1?auto=format&fit=crop&w=1600&q=80');
+height:50vh;
+background:url('https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=1600&q=80');
 background-size:cover;
 background-position:center;
 display:flex;
@@ -37,26 +37,44 @@ position:relative;
 content:"";
 position:absolute;
 top:0;left:0;right:0;bottom:0;
-background:rgba(255,255,255,0.75);
+background:rgba(0,0,0,0.5);
 }
 
 .hero h1{
 position:relative;
-font-size:45px;
+color:white;
+font-size:50px;
 }
 
-/* SEARCH BAR */
+/* SEARCH */
 .search{
-padding:20px;
 text-align:center;
+padding:20px;
 }
 
 .search input{
 width:70%;
 padding:12px;
-border:1px solid #ddd;
 border-radius:25px;
+border:1px solid #ddd;
 outline:none;
+}
+
+/* CATEGORY BAR */
+.categories{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+padding:10px;
+}
+
+.cat{
+padding:8px 15px;
+background:white;
+border-radius:20px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+font-size:14px;
 }
 
 /* GRID */
@@ -74,7 +92,6 @@ border-radius:12px;
 overflow:hidden;
 box-shadow:0 8px 20px rgba(0,0,0,0.08);
 transition:0.3s;
-cursor:pointer;
 }
 
 .card:hover{
@@ -83,13 +100,13 @@ transform:scale(1.05);
 
 .card img{
 width:100%;
-height:250px;
+height:220px;
 object-fit:cover;
 }
 
 .card h3{
 margin:10px;
-font-size:16px;
+font-size:15px;
 }
 
 .price{
@@ -97,72 +114,71 @@ margin:0 10px 15px;
 color:#00a86b;
 font-weight:bold;
 }
-
-/* BUTTON STYLE (optional feel) */
-.tag{
-position:absolute;
-background:#00a86b;
-color:white;
-padding:5px 10px;
-font-size:12px;
-border-radius:0 0 10px 0;
-}
 </style>
 </head>
 
 <body>
 
-<div class="header">DMZ COUTURE</div>
+<div class="header">DMZ MART</div>
 
 <div class="hero">
-<h1>Luxury Streetwear Collection</h1>
+<h1>Everything You Need. One Store.</h1>
 </div>
 
 <div class="search">
-<input type="text" placeholder="Search products...">
+<input type="text" placeholder="Search phones, electronics, accessories...">
+</div>
+
+<div class="categories">
+<div class="cat">📱 Phones</div>
+<div class="cat">🎧 Accessories</div>
+<div class="cat">💻 Electronics</div>
+<div class="cat">🔥 Deals</div>
 </div>
 
 <div class="grid">
 
-<a href="hoodie.html">
+<!-- PHONE -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1520975958225-6b2d2b3a6c0d?auto=format&fit=crop&w=800&q=80">
-<h3>Luxury Hoodie</h3>
-<div class="price">₦25,000</div>
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80">
+<h3>iPhone 14 Pro</h3>
+<div class="price">₦950,000</div>
 </div>
-</a>
 
-<a href="tee.html">
+<!-- PHONE -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80">
-<h3>Street Tee</h3>
-<div class="price">₦10,000</div>
+<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a?auto=format&fit=crop&w=800&q=80">
+<h3>Samsung Galaxy S23</h3>
+<div class="price">₦820,000</div>
 </div>
-</a>
 
-<a href="cap.html">
+<!-- HEADPHONES -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=800&q=80">
-<h3>Designer Cap</h3>
-<div class="price">₦7,000</div>
+<img src="https://images.unsplash.com/photo-1518441902117-f0a1c1c1c1c1?auto=format&fit=crop&w=800&q=80">
+<h3>AirPods Pro</h3>
+<div class="price">₦180,000</div>
 </div>
-</a>
 
-<a href="jeans.html">
+<!-- LAPTOP -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80">
-<h3>Premium Jeans</h3>
-<div class="price">₦18,000</div>
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80">
+<h3>MacBook Pro</h3>
+<div class="price">₦1,500,000</div>
 </div>
-</a>
 
-<a href="jacket.html">
+<!-- SPEAKER -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1520975869018-8a2c6d7b2c2f?auto=format&fit=crop&w=800&q=80">
-<h3>DMZ Jacket</h3>
-<div class="price">₦40,000</div>
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693?auto=format&fit=crop&w=800&q=80">
+<h3>Bluetooth Speaker</h3>
+<div class="price">₦75,000</div>
 </div>
-</a>
+
+<!-- WATCH -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80">
+<h3>Smart Watch</h3>
+<div class="price">₦120,000</div>
+</div>
 
 </div>
 
