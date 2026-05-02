@@ -6,26 +6,30 @@
     <title>DMZ Mart - Product</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-50">
 
     <div class="max-w-6xl mx-auto px-4 py-8">
         <a href="index.html" class="flex items-center gap-2 text-orange-600 mb-8 hover:text-orange-700">
-            <i class="fas fa-arrow-left"></i> Back to Shop
+            <i class="fas fa-arrow-left"></i> Back to DMZ Mart
         </a>
 
         <div class="grid md:grid-cols-2 gap-12">
             <div>
-                <img id="productImg" class="w-full rounded-3xl shadow-xl" alt="">
+                <img id="productImg" class="w-full rounded-3xl shadow-xl" alt="Product">
             </div>
 
             <div>
                 <h1 id="productName" class="text-4xl font-bold"></h1>
-                <p id="productPrice" class="text-4xl font-bold text-orange-600 mt-4"></p>
+                <p id="productPrice" class="text-4xl font-bold text-orange-600 mt-6"></p>
 
-                <div class="mt-8">
-                    <h3 class="font-semibold mb-2">Description</h3>
-                    <p id="productDesc" class="text-gray-600"></p>
+                <div class="mt-10">
+                    <h3 class="font-semibold mb-3">Description</h3>
+                    <p id="productDesc" class="text-gray-600 leading-relaxed"></p>
                 </div>
 
                 <button onclick="addToCart()" 
@@ -37,44 +41,24 @@
     </div>
 
     <script>
-        // Sample product database
-        const products = {
-            "a35": {
-                name: "Samsung Galaxy A35 5G",
-                price: 148000,
-                img: "https://i.postimg.cc/XqXKd8HW/IMG-1749.jpg",
-                desc: "Excellent mid-range phone with great camera and battery."
-            },
-            "s24": {
-                name: "Samsung Galaxy S24 Ultra",
-                price: 875000,
-                img: "https://i.postimg.cc/q7PXyyfp/IMG-1757.jpg",
-                desc: "Flagship smartphone with premium features."
-            },
-            "nike": {
-                name: "Nike Dunk Low",
-                price: 42500,
-                img: "https://i.postimg.cc/wj091QmD/IMG-1762.jpg",
-                desc: "Classic and comfortable sneakers."
-            }
-            // Add more products here as needed
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        const productData = {
+            "a35": { name: "Samsung Galaxy A35 5G", price: 148000, img: "https://i.postimg.cc/XqXKd8HW/IMG-1749.jpg", desc: "Great performance and camera." },
+            "s24": { name: "Samsung Galaxy S24 Ultra", price: 875000, img: "https://i.postimg.cc/q7PXyyfp/IMG-1757.jpg", desc: "Premium flagship phone." },
+            "nike": { name: "Nike Dunk Low", price: 42500, img: "https://i.postimg.cc/wj091QmD/IMG-1762.jpg", desc: "Iconic sneakers." }
         };
 
-        // Get product from URL (example: product.html?id=a35)
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('id') || "a35"; // default
+        const p = productData[id] || productData["a35"];
 
-        const product = products[productId];
-
-        if (product) {
-            document.getElementById('productName').textContent = product.name;
-            document.getElementById('productPrice').textContent = "₦" + product.price.toLocaleString();
-            document.getElementById('productImg').src = product.img;
-            document.getElementById('productDesc').textContent = product.desc;
-        }
+        document.getElementById('productName').textContent = p.name;
+        document.getElementById('productPrice').textContent = "₦" + p.price.toLocaleString();
+        document.getElementById('productImg').src = p.img;
+        document.getElementById('productDesc').textContent = p.desc;
 
         function addToCart() {
-            alert("✅ " + product.name + " added to cart!");
+            alert(p.name + " added to cart!");
         }
     </script>
 </body>
