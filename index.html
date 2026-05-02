@@ -23,7 +23,7 @@ letter-spacing:3px;
 
 /* HERO */
 .hero{
-height:50vh;
+height:45vh;
 background:url('https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=1600&q=80');
 background-size:cover;
 background-position:center;
@@ -43,46 +43,15 @@ background:rgba(0,0,0,0.5);
 .hero h1{
 position:relative;
 color:white;
-font-size:50px;
-}
-
-/* SEARCH */
-.search{
-text-align:center;
-padding:20px;
-}
-
-.search input{
-width:70%;
-padding:12px;
-border-radius:25px;
-border:1px solid #ddd;
-outline:none;
-}
-
-/* CATEGORY BAR */
-.categories{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-padding:10px;
-}
-
-.cat{
-padding:8px 15px;
-background:white;
-border-radius:20px;
-box-shadow:0 2px 5px rgba(0,0,0,0.1);
-font-size:14px;
+font-size:40px;
 }
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
-padding:30px;
+padding:25px;
 }
 
 /* CARD */
@@ -90,8 +59,9 @@ padding:30px;
 background:white;
 border-radius:12px;
 overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
 transition:0.3s;
+text-align:center;
 }
 
 .card:hover{
@@ -100,19 +70,24 @@ transform:scale(1.05);
 
 .card img{
 width:100%;
-height:220px;
+height:200px;
 object-fit:cover;
 }
 
 .card h3{
-margin:10px;
-font-size:15px;
+margin:10px 0 5px;
 }
 
-.price{
-margin:0 10px 15px;
+.card p{
 color:#00a86b;
 font-weight:bold;
+margin-bottom:15px;
+text-decoration:none;
+}
+
+a{
+text-decoration:none;
+color:black;
 }
 </style>
 </head>
@@ -122,63 +97,55 @@ font-weight:bold;
 <div class="header">DMZ MART</div>
 
 <div class="hero">
-<h1>Everything You Need. One Store.</h1>
-</div>
-
-<div class="search">
-<input type="text" placeholder="Search phones, electronics, accessories...">
-</div>
-
-<div class="categories">
-<div class="cat">📱 Phones</div>
-<div class="cat">🎧 Accessories</div>
-<div class="cat">💻 Electronics</div>
-<div class="cat">🔥 Deals</div>
+<h1>Shop Phones, Fashion & Electronics</h1>
 </div>
 
 <div class="grid">
 
-<!-- PHONE -->
+<!-- PRODUCT 1 -->
+<a href="product.html?name=iPhone 14 Pro&price=950000&img=https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
 <h3>iPhone 14 Pro</h3>
-<div class="price">₦950,000</div>
+<p>₦950,000</p>
 </div>
+</a>
 
-<!-- PHONE -->
+<!-- PRODUCT 2 -->
+<a href="product.html?name=Samsung S23&price=820000&img=https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a?auto=format&fit=crop&w=800&q=80">
-<h3>Samsung Galaxy S23</h3>
-<div class="price">₦820,000</div>
+<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<h3>Samsung S23</h3>
+<p>₦820,000</p>
 </div>
+</a>
 
-<!-- HEADPHONES -->
+<!-- PRODUCT 3 -->
+<a href="product.html?name=AirPods Pro&price=180000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1518441902117-f0a1c1c1c1c1?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
 <h3>AirPods Pro</h3>
-<div class="price">₦180,000</div>
+<p>₦180,000</p>
 </div>
+</a>
 
-<!-- LAPTOP -->
+<!-- PRODUCT 4 -->
+<a href="product.html?name=MacBook Pro&price=1500000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
 <h3>MacBook Pro</h3>
-<div class="price">₦1,500,000</div>
+<p>₦1,500,000</p>
 </div>
+</a>
 
-<!-- SPEAKER -->
+<!-- PRODUCT 5 -->
+<a href="product.html?name=Smart Watch&price=120000&img=https://images.unsplash.com/photo-1523275335684-37898b6baf30">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231693?auto=format&fit=crop&w=800&q=80">
-<h3>Bluetooth Speaker</h3>
-<div class="price">₦75,000</div>
-</div>
-
-<!-- WATCH -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
 <h3>Smart Watch</h3>
-<div class="price">₦120,000</div>
+<p>₦120,000</p>
 </div>
+</a>
 
 </div>
 
