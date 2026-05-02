@@ -1,101 +1,198 @@
-<h2>Our Products</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DMZ Couture</title>
 
-<div>
-    <h3>Luxury Hoodie</h3>
-    <p>₦25,000</p>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5f5f5;
+        }
+
+        /* HEADER */
+        .header {
+            background: black;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .cart {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            padding: 10px;
+            text-align: center;
+            background: white;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 8px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo">DMZ Couture 👗</div>
+    <div class="cart">🛒 Cart: <span id="cartCount">0</span></div>
 </div>
 
-<div>
-    <h3>Streetwear Graphic Tee</h3>
-    <p>₦10,000</p>
+<div class="search-box">
+    <input type="text" id="search" onkeyup="searchProducts()" placeholder="Search products...">
 </div>
 
-<div>
-    <h3>Designer Cap</h3>
-    <p>₦7,000</p>
+<div class="products" id="productList">
+
+    <div class="card">
+        <img src="hoodie.jpg">
+        <h3>Luxury Hoodie</h3>
+        <p class="price">₦25,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="tee.jpg">
+        <h3>Streetwear Tee</h3>
+        <p class="price">₦10,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="cap.jpg">
+        <h3>Designer Cap</h3>
+        <p class="price">₦7,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="jeans.jpg">
+        <h3>Premium Jeans</h3>
+        <p class="price">₦18,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="jacket.jpg">
+        <h3>DMZ Jacket</h3>
+        <p class="price">₦40,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="tracksuit.jpg">
+        <h3>Street Tracksuit</h3>
+        <p class="price">₦45,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="polo.jpg">
+        <h3>Luxury Polo</h3>
+        <p class="price">₦15,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="hoodie2.jpg">
+        <h3>Oversized Hoodie</h3>
+        <p class="price">₦30,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="shirt.jpg">
+        <h3>Classic Shirt</h3>
+        <p class="price">₦12,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="cargo.jpg">
+        <h3>Street Cargo Pants</h3>
+        <p class="price">₦22,000</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
 </div>
 
-<div>
-    <h3>Premium Denim Jeans</h3>
-    <p>₦18,000</p>
-</div>
+<script>
+let cart = 0;
 
-<div>
-    <h3>Oversized Hoodie</h3>
-    <p>₦30,000</p>
-</div>
+function addToCart() {
+    cart++;
+    document.getElementById("cartCount").innerText = cart;
+}
 
-<div>
-    <h3>Classic White Shirt</h3>
-    <p>₦12,000</p>
-</div>
+function searchProducts() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
 
-<div>
-    <h3>Joggers Set</h3>
-    <p>₦20,000</p>
-</div>
+    for (let i = 0; i < cards.length; i++) {
+        let title = cards[i].getElementsByTagName("h3")[0];
+        if (title.innerText.toLowerCase().includes(input)) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+</script>
 
-<div>
-    <h3>DMZ Signature Jacket</h3>
-    <p>₦40,000</p>
-</div>
-
-<div>
-    <h3>Street Cargo Pants</h3>
-    <p>₦22,000</p>
-</div>
-
-<div>
-    <h3>Minimal Black Tee</h3>
-    <p>₦9,500</p>
-</div>
-
-<div>
-    <h3>Luxury Polo Shirt</h3>
-    <p>₦15,000</p>
-</div>
-
-<div>
-    <h3>Denim Jacket</h3>
-    <p>₦35,000</p>
-</div>
-
-<div>
-    <h3>Streetwear Tracksuit</h3>
-    <p>₦45,000</p>
-</div>
-
-<div>
-    <h3>Urban Zip Hoodie</h3>
-    <p>₦32,000</p>
-</div>
-
-<div>
-    <h3>Relax Fit Cargo Pants</h3>
-    <p>₦24,000</p>
-</div>
-
-<div>
-    <h3>DMZ Street Hoodie (Black)</h3>
-    <p>₦29,000</p>
-</div>
-
-<div>
-    <h3>DMZ Street Hoodie (White)</h3>
-    <p>₦29,000</p>
-</div>
-
-<div>
-    <h3>Luxury Two-Piece Set</h3>
-    <p>₦38,000</p>
-</div>
-
-<div>
-    <h3>Oversized Graphic Sweatshirt</h3>
-    <p>₦27,000</p>
-</div>
-
-<div>
-    <h3>Street Culture Cap</h3>
-    <p>₦8,000</p>
-</div>
+</body>
+</html>
