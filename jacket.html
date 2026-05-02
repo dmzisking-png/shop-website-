@@ -1,9 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head><title>DMZ Jacket</title></head>
-<body style="text-align:center; font-family:Arial; background:#111; color:white;">
+<head>
+<title>DMZ Jacket</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+text-align:center;
+}
+
+.box{
+padding:60px 20px;
+animation:fadeIn 1.2s ease;
+}
+
+img{
+width:260px;
+border-radius:15px;
+transition:0.3s;
+}
+
+img:hover{
+transform:scale(1.1);
+}
+
+button{
+padding:12px 25px;
+border:none;
+margin-top:20px;
+cursor:pointer;
+background:white;
+transition:0.3s;
+}
+
+button:hover{
+background:#00ff99;
+transform:scale(1.1);
+}
+
+a{
+color:#00ff99;
+display:block;
+margin-top:20px;
+text-decoration:none;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
 <h1>DMZ Jacket</h1>
-<p>₦40,000</p>
-<a href="index.html">Back to Store</a>
+
+<img src="jacket.jpg">
+
+<h2>₦40,000</h2>
+
+<p>Premium luxury streetwear jacket.</p>
+
+<button>Add to Cart</button>
+
+<a href="index.html">← Back to Store</a>
+</div>
+
 </body>
 </html>
