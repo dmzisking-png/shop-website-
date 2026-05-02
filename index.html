@@ -17,7 +17,7 @@ color:white;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 25px;
+padding:18px 22px;
 position:sticky;
 top:0;
 z-index:10;
@@ -29,25 +29,23 @@ font-size:26px;
 font-weight:bold;
 }
 
-/* CART */
 .cart{
 background:#00ff99;
 color:#111;
 padding:10px 16px;
 border-radius:25px;
 font-weight:bold;
-font-size:16px;
 }
 
-/* PROMO BANNER */
-.banner{
+/* HERO BANNER */
+.hero{
 height:320px;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-font-size:46px;
+font-size:42px;
 font-weight:bold;
 background-size:cover;
 background-position:center;
@@ -60,7 +58,7 @@ animation:slide 12s infinite;
 100%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
 }
 
-/* CATEGORY BAR (CLICKABLE) */
+/* CATEGORY ICON STRIP */
 .catbar{
 display:flex;
 gap:12px;
@@ -70,57 +68,70 @@ padding:15px;
 }
 
 .cat{
-padding:14px 20px;
+padding:14px 18px;
 background:#eee;
 border-radius:25px;
-font-size:18px;
 white-space:nowrap;
+font-size:18px;
 cursor:pointer;
-transition:0.2s;
 }
 
-.cat:hover{
-background:#00ff99;
-color:#111;
+/* SECTION TITLE */
+.section-title{
+padding:15px 20px;
+font-size:22px;
+font-weight:bold;
 }
 
-/* PRODUCT GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-padding:25px;
+/* PRODUCT ROWS (HORIZONTAL SCROLL LIKE JUMIA) */
+.row{
+display:flex;
+gap:15px;
+overflow-x:auto;
+padding:10px 20px;
 }
 
-/* PRODUCT CARD (BIGGER + MORE PREMIUM) */
 .card{
+min-width:220px;
 background:white;
 border-radius:15px;
 overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.12);
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:scale(1.05);
 }
 
 .card img{
 width:100%;
-height:380px; /* 🔥 BIGGER IMAGE */
+height:250px;
 object-fit:cover;
 }
 
 .card h3{
-margin:14px;
-font-size:22px; /* 🔥 BIGGER FONT */
+margin:10px;
+font-size:18px;
 }
 
 .price{
-margin:0 14px 20px;
+margin:0 10px 15px;
 color:#00a86b;
-font-size:22px; /* 🔥 BIGGER PRICE */
+font-size:18px;
 font-weight:bold;
+}
+
+/* PROMO BANNER BLOCK */
+.promo{
+margin:20px;
+background:linear-gradient(90deg,#111,#00ff99);
+color:white;
+padding:25px;
+border-radius:15px;
+font-size:22px;
+font-weight:bold;
+text-align:center;
 }
 
 a{
@@ -132,81 +143,105 @@ color:black;
 
 <body>
 
+<!-- TOP -->
 <div class="topbar">
 <div class="logo">DMZ MART</div>
 <a href="cart.html" class="cart">🛒 Cart</a>
 </div>
 
-<div class="banner">
-MEGA ELECTRONICS SALE • DEALS EVERYDAY • LIMITED STOCK
+<!-- HERO -->
+<div class="hero">
+BIG ELECTRONICS SALE • UP TO 70% OFF
 </div>
 
-<!-- CATEGORY FILTER -->
+<!-- CATEGORY -->
 <div class="catbar">
-<div class="cat" onclick="filter('all')">All</div>
-<div class="cat" onclick="filter('phone')">Phones</div>
-<div class="cat" onclick="filter('laptop')">Laptops</div>
-<div class="cat" onclick="filter('tv')">TVs</div>
-<div class="cat" onclick="filter('gaming')">Gaming</div>
-<div class="cat" onclick="filter('home')">Home</div>
-<div class="cat" onclick="filter('audio')">Audio</div>
+<div class="cat">Phones</div>
+<div class="cat">Laptops</div>
+<div class="cat">TVs</div>
+<div class="cat">Gaming</div>
+<div class="cat">Home</div>
+<div class="cat">Audio</div>
 </div>
 
-<!-- PRODUCTS -->
-<div class="grid" id="products"></div>
+<!-- PROMO -->
+<div class="promo">
+🔥 FLASH SALE: FREE DELIVERY ON FIRST ORDER
+</div>
 
-<script>
+<!-- FLASH SALES -->
+<div class="section-title">⚡ Flash Sales</div>
+<div class="row">
 
-const products = [
-
-{name:"iPhone 15 Pro",price:1200000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",cat:"phone"},
-{name:"Samsung S24 Ultra",price:1100000,img:"https://images.unsplash.com/photo-1512499617640-c2f999098c3a",cat:"phone"},
-{name:"Google Pixel 8",price:700000,img:"https://images.unsplash.com/photo-1598327105666-5b89351aff97",cat:"phone"},
-
-{name:"MacBook Pro M3",price:1800000,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8",cat:"laptop"},
-{name:"Dell XPS 15",price:1300000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853",cat:"laptop"},
-
-{name:"55 inch Smart TV",price:650000,img:"https://images.unsplash.com/photo-1593359677879-a4bb92f829d1",cat:"tv"},
-
-{name:"PlayStation 5",price:750000,img:"https://images.unsplash.com/photo-1606813907291-d86efa9b94db",cat:"gaming"},
-{name:"Xbox Series X",price:720000,img:"https://images.unsplash.com/photo-1621259182978-fbf93132d53d",cat:"gaming"},
-
-{name:"Washing Machine",price:480000,img:"https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d",cat:"home"},
-
-{name:"AirPods Pro",price:180000,img:"https://images.unsplash.com/photo-1585386959984-a41552231693",cat:"audio"},
-{name:"Apple Watch Ultra",price:350000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30",cat:"audio"}
-
-];
-
-let box=document.getElementById("products");
-
-function show(list){
-box.innerHTML="";
-list.forEach(p=>{
-box.innerHTML+=`
-<a href="product.html?name=${p.name}&price=${p.price}&img=${p.img}">
+<a href="product.html?name=iPhone 15 Pro&price=1200000&img=https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
 <div class="card">
-<img src="${p.img}">
-<h3>${p.name}</h3>
-<div class="price">₦${p.price}</div>
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>iPhone 15 Pro</h3>
+<div class="price">₦1,200,000</div>
 </div>
 </a>
-`;
-});
-}
 
-show(products);
+<a href="product.html?name=PS5&price=750000&img=https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PlayStation 5</h3>
+<div class="price">₦750,000</div>
+</div>
+</a>
 
-function filter(cat){
-if(cat==="all"){
-show(products);
-}else{
-let filtered=products.filter(p=>p.cat===cat);
-show(filtered);
-}
-}
+<a href="product.html?name=MacBook M3&price=1800000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>MacBook M3</h3>
+<div class="price">₦1,800,000</div>
+</div>
+</a>
 
-</script>
+</div>
+
+<!-- TRENDING -->
+<div class="section-title">🔥 Trending Now</div>
+<div class="row">
+
+<a href="product.html?name=Samsung TV&price=650000&img=https://images.unsplash.com/photo-1593359677879-a4bb92f829d1">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1">
+<h3>Smart TV</h3>
+<div class="price">₦650,000</div>
+</div>
+</a>
+
+<a href="product.html?name=AirPods Pro&price=180000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+<h3>AirPods Pro</h3>
+<div class="price">₦180,000</div>
+</div>
+</a>
+
+</div>
+
+<!-- RECOMMENDED -->
+<div class="section-title">⭐ Recommended for You</div>
+<div class="row">
+
+<a href="product.html?name=Xbox Series X&price=720000&img=https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
+<h3>Xbox Series X</h3>
+<div class="price">₦720,000</div>
+</div>
+</a>
+
+<a href="product.html?name=Apple Watch&price=350000&img=https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<h3>Apple Watch</h3>
+<div class="price">₦350,000</div>
+</div>
+</a>
+
+</div>
 
 </body>
 </html>
