@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DMZ Mart App</title>
+<title>DMZ Mart</title>
 
 <style>
 body{
 margin:0;
 font-family:Arial;
-background:#f4f6f8;
+background:#f4f4f4;
 }
 
-/* TOP BAR */
-.top{
+/* TOP BAR (JUMIA STYLE) */
+.topbar{
 background:#f68b1e;
-color:white;
 display:flex;
 align-items:center;
-padding:14px;
+padding:12px 18px;
 position:sticky;
 top:0;
 z-index:10;
 }
 
-.top input{
+.logo{
+color:white;
+font-size:22px;
+font-weight:bold;
+margin-right:10px;
+}
+
+.search{
 flex:1;
-margin-left:10px;
+}
+
+.search input{
+width:100%;
 padding:10px;
 border:none;
-border-radius:6px;
+border-radius:5px;
 font-size:14px;
 }
 
-/* CATEGORY SCROLL */
+/* CATEGORY BAR */
 .categories{
 display:flex;
 overflow-x:auto;
@@ -41,114 +50,68 @@ background:white;
 }
 
 .cat{
-padding:10px 14px;
+padding:8px 14px;
 background:#eee;
 border-radius:20px;
 white-space:nowrap;
-font-size:14px;
-cursor:pointer;
+font-size:13px;
 }
 
-/* PRODUCT GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
+/* BANNER */
+.banner{
+height:220px;
+background:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:28px;
+font-weight:bold;
+text-align:center;
 padding:10px;
 }
 
+/* SECTION TITLE */
+.section{
+padding:10px 12px;
+font-weight:bold;
+font-size:16px;
+}
+
+/* PRODUCT GRID (JUMIA STYLE DENSITY) */
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+padding:10px;
+}
+
+/* PRODUCT CARD */
 .card{
 background:white;
-border-radius:10px;
+border-radius:6px;
 overflow:hidden;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-cursor:pointer;
-position:relative;
+box-shadow:0 1px 5px rgba(0,0,0,0.1);
 }
 
 .card img{
 width:100%;
-height:170px;
+height:140px;
 object-fit:cover;
 }
 
 .card h3{
 font-size:13px;
-margin:8px;
+margin:6px;
 }
 
 .price{
-margin:0 8px 10px;
-color:green;
+margin:0 6px 10px;
+font-size:14px;
 font-weight:bold;
-}
-
-/* BOTTOM NAV (JUMIA STYLE) */
-.bottom{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:white;
-display:flex;
-justify-content:space-around;
-padding:10px 0;
-border-top:1px solid #ddd;
-font-size:12px;
-}
-
-/* MODAL */
-.modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-display:none;
-justify-content:center;
-align-items:center;
-}
-
-.modal-content{
-background:white;
-width:90%;
-border-radius:10px;
-overflow:hidden;
-}
-
-.modal img{
-width:100%;
-height:250px;
-object-fit:cover;
-}
-
-.modal-body{
-padding:10px;
-}
-
-.btn{
-background:#f68b1e;
-color:white;
-padding:10px;
-text-align:center;
-margin-top:10px;
-border-radius:6px;
-cursor:pointer;
-}
-
-/* CART */
-.cart-box{
-position:fixed;
-top:60px;
-right:10px;
-background:white;
-padding:10px;
-width:200px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-display:none;
-font-size:12px;
+color:green;
 }
 </style>
 </head>
@@ -156,122 +119,94 @@ font-size:12px;
 <body>
 
 <!-- TOP -->
-<div class="top">
-<b>DMZ</b>
-<input id="search" placeholder="Search products..." onkeyup="search()">
-<div onclick="toggleCart()">🛒</div>
+<div class="topbar">
+<div class="logo">DMZ</div>
+<div class="search">
+<input placeholder="Search products, brands and categories">
+</div>
 </div>
 
 <!-- CATEGORIES -->
 <div class="categories">
-<div class="cat" onclick="filter('all')">All</div>
-<div class="cat" onclick="filter('iphone')">iPhone</div>
-<div class="cat" onclick="filter('samsung')">Samsung</div>
-<div class="cat" onclick="filter('laptop')">Laptops</div>
-<div class="cat" onclick="filter('gaming')">Gaming</div>
+<div class="cat">Phones</div>
+<div class="cat">Laptops</div>
+<div class="cat">TVs</div>
+<div class="cat">Gaming</div>
+<div class="cat">Home</div>
+<div class="cat">Audio</div>
+<div class="cat">Fashion</div>
 </div>
 
-<!-- PRODUCTS -->
-<div class="grid" id="grid"></div>
-
-<!-- CART -->
-<div class="cart-box" id="cartBox"></div>
-
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal()">
-<div class="modal-content" onclick="event.stopPropagation()">
-<img id="mimg">
-<div class="modal-body">
-<h3 id="mname"></h3>
-<p id="mprice"></p>
-<div class="btn" onclick="addToCart()">Add to Cart</div>
-</div>
-</div>
+<!-- BANNER -->
+<div class="banner">
+Mega Deals • Up to 70% Off
 </div>
 
-<!-- BOTTOM NAV -->
-<div class="bottom">
-<div>🏠 Home</div>
-<div>📦 Categories</div>
-<div>❤️ Wishlist</div>
-<div onclick="toggleCart()">🛒 Cart</div>
+<!-- FLASH -->
+<div class="section">Flash Sales</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>iPhone 15 Pro</h3>
+<div class="price">₦1,200,000</div>
 </div>
 
-<script>
-
-let products=[
-{name:"iPhone 14",cat:"iphone",price:900000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"},
-{name:"iPhone 15 Pro",cat:"iphone",price:1350000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"},
-{name:"Samsung S23",cat:"samsung",price:800000,img:"https://images.unsplash.com/photo-1512499617640-c2f999098c3a"},
-{name:"MacBook Pro",cat:"laptop",price:1800000,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"},
-{name:"PS5",cat:"gaming",price:750000,img:"https://images.unsplash.com/photo-1606813907291-d86efa9b94db"}
-];
-
-let cart=[];
-let selected=null;
-
-function render(list){
-let g=document.getElementById("grid");
-g.innerHTML="";
-list.forEach((p,i)=>{
-g.innerHTML+=`
-<div class="card" onclick="openModal(${i})">
-<img src="${p.img}">
-<h3>${p.name}</h3>
-<div class="price">₦${p.price}</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>MacBook Pro M3</h3>
+<div class="price">₦1,800,000</div>
 </div>
-`;
-});
-}
 
-render(products);
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PlayStation 5</h3>
+<div class="price">₦750,000</div>
+</div>
 
-/* MODAL */
-function openModal(i){
-selected=products[i];
-document.getElementById("mimg").src=selected.img;
-document.getElementById("mname").innerText=selected.name;
-document.getElementById("mprice").innerText="₦"+selected.price;
-document.getElementById("modal").style.display="flex";
-}
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+<h3>AirPods Pro</h3>
+<div class="price">₦180,000</div>
+</div>
 
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
+</div>
 
-/* CART */
-function addToCart(){
-cart.push(selected);
-alert("Added to cart");
-closeModal();
-}
+<!-- PHONES -->
+<div class="section">Phones</div>
+<div class="grid">
 
-function toggleCart(){
-let box=document.getElementById("cartBox");
-if(box.style.display==="block"){
-box.style.display="none";
-}else{
-box.style.display="block";
-box.innerHTML="<b>Cart</b><br>";
-cart.forEach(c=>{
-box.innerHTML+=c.name+" - ₦"+c.price+"<br>";
-});
-}
-}
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>iPhone 14 Pro</h3>
+<div class="price">₦950,000</div>
+</div>
 
-/* FILTER */
-function filter(cat){
-if(cat==="all") render(products);
-else render(products.filter(p=>p.cat===cat));
-}
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<h3>Samsung S24 Ultra</h3>
+<div class="price">₦1,100,000</div>
+</div>
 
-/* SEARCH */
-function search(){
-let v=document.getElementById("search").value.toLowerCase();
-render(products.filter(p=>p.name.toLowerCase().includes(v)));
-}
+</div>
 
-</script>
+<!-- GAMING -->
+<div class="section">Gaming</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PS5 Console</h3>
+<div class="price">₦750,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
+<h3>Xbox Series X</h3>
+<div class="price">₦720,000</div>
+</div>
+
+</div>
 
 </body>
 </html>
