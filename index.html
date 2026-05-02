@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DMZ Mart</title>
+<title>DMZ Mart Electronics</title>
 
 <style>
 body{
@@ -16,21 +16,22 @@ background:#111;
 color:white;
 display:flex;
 justify-content:space-between;
-padding:18px 25px;
+padding:18px 22px;
 position:sticky;
 top:0;
+z-index:10;
 }
 
 .logo{
-font-size:22px;
-font-weight:bold;
 color:#00ff99;
+font-size:20px;
+font-weight:bold;
 }
 
 /* HERO */
 .hero{
-height:65vh;
-background:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1600&q=80');
+height:60vh;
+background:url('https://images.unsplash.com/photo-1587202372775-98927f9e2f47?auto=format&fit=crop&w=1600&q=80');
 background-size:cover;
 background-position:center;
 display:flex;
@@ -41,49 +42,10 @@ color:white;
 }
 
 .hero h1{
-font-size:55px;
+font-size:50px;
 background:rgba(0,0,0,0.5);
 padding:20px;
 border-radius:10px;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
-padding:25px;
-}
-
-/* BIG CARDS (BULKY LOOK) */
-.card{
-background:white;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 8px 25px rgba(0,0,0,0.15);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-}
-
-.card img{
-width:100%;
-height:320px;
-object-fit:cover;
-}
-
-.card h3{
-margin:12px;
-font-size:18px;
-}
-
-.price{
-margin:0 12px 15px;
-color:#00a86b;
-font-size:18px;
-font-weight:bold;
 }
 
 /* CATEGORY BAR */
@@ -91,16 +53,59 @@ font-weight:bold;
 display:flex;
 gap:10px;
 overflow-x:auto;
-padding:15px;
 background:white;
+padding:12px;
 }
 
 .cat{
 padding:10px 16px;
 background:#eee;
-border-radius:25px;
+border-radius:20px;
 white-space:nowrap;
-font-size:16px;
+font-size:15px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+padding:20px;
+}
+
+/* CARD */
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.card h3{
+margin:10px;
+font-size:15px;
+}
+
+.price{
+margin:0 10px 15px;
+color:#00a86b;
+font-weight:bold;
+}
+
+a{
+text-decoration:none;
+color:black;
 }
 </style>
 </head>
@@ -109,23 +114,25 @@ font-size:16px;
 
 <div class="topbar">
 <div class="logo">DMZ MART</div>
-<a href="cart.html" style="color:white;font-size:18px;">🛒 Cart</a>
+<div><a href="cart.html" style="color:white;">🛒 Cart</a></div>
 </div>
 
 <div class="hero">
-<h1>Everything You Need — Phones, Tech & More</h1>
+<h1>Electronics • Gadgets • Gaming • Home Tech</h1>
 </div>
 
 <div class="catbar">
 <div class="cat">Phones</div>
 <div class="cat">Laptops</div>
-<div class="cat">Audio</div>
-<div class="cat">Accessories</div>
+<div class="cat">TVs</div>
+<div class="cat">Gaming</div>
+<div class="cat">Home Appliances</div>
+<div class="cat">Smart Devices</div>
 </div>
 
 <div class="grid">
 
-<!-- PRODUCT -->
+<!-- PHONES -->
 <a href="product.html?name=iPhone 14 Pro&price=950000&img=https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
@@ -134,27 +141,80 @@ font-size:16px;
 </div>
 </a>
 
-<a href="product.html?name=MacBook Pro&price=1500000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<a href="product.html?name=Samsung S23 Ultra&price=820000&img=https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<h3>Samsung S23 Ultra</h3>
+<div class="price">₦820,000</div>
+</div>
+</a>
+
+<a href="product.html?name=Google Pixel 8&price=700000&img=https://images.unsplash.com/photo-1598327105666-5b89351aff97">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97">
+<h3>Google Pixel 8</h3>
+<div class="price">₦700,000</div>
+</div>
+</a>
+
+<!-- LAPTOPS -->
+<a href="product.html?name=MacBook Pro M2&price=1500000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>MacBook Pro</h3>
+<h3>MacBook Pro M2</h3>
 <div class="price">₦1,500,000</div>
 </div>
 </a>
 
-<a href="product.html?name=AirPods Pro&price=180000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
+<a href="product.html?name=Dell XPS 13&price=980000&img=https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
-<h3>AirPods Pro</h3>
-<div class="price">₦180,000</div>
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
+<h3>Dell XPS 13</h3>
+<div class="price">₦980,000</div>
 </div>
 </a>
 
-<a href="product.html?name=Smart Watch&price=120000&img=https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<!-- TV -->
+<a href="product.html?name=Samsung 55in Smart TV&price=650000&img=https://images.unsplash.com/photo-1593359677879-a4bb92f829d1">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1">
+<h3>55” Smart TV</h3>
+<div class="price">₦650,000</div>
+</div>
+</a>
+
+<!-- GAMING -->
+<a href="product.html?name=PlayStation 5&price=750000&img=https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PlayStation 5</h3>
+<div class="price">₦750,000</div>
+</div>
+</a>
+
+<a href="product.html?name=Xbox Series X&price=720000&img=https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
+<h3>Xbox Series X</h3>
+<div class="price">₦720,000</div>
+</div>
+</a>
+
+<!-- HOME APPLIANCES -->
+<a href="product.html?name=LG Washing Machine&price=480000&img=https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d">
+<h3>Washing Machine</h3>
+<div class="price">₦480,000</div>
+</div>
+</a>
+
+<!-- SMART DEVICES -->
+<a href="product.html?name=Apple Watch Ultra&price=320000&img=https://images.unsplash.com/photo-1523275335684-37898b6baf30">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-<h3>Smart Watch</h3>
-<div class="price">₦120,000</div>
+<h3>Apple Watch Ultra</h3>
+<div class="price">₦320,000</div>
 </div>
 </a>
 
