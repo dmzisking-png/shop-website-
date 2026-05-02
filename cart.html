@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DMZ Mart Cart</title>
+<title>Cart</title>
 
 <style>
 body{
-margin:0;
 font-family:Arial;
-background:#f5f5f5;
-}
-
-.header{
-background:#111;
-color:white;
-padding:15px;
-text-align:center;
-font-size:20px;
-font-weight:bold;
+background:#f1f3f6;
+margin:0;
 }
 
 .box{
@@ -24,95 +15,72 @@ max-width:700px;
 margin:30px auto;
 background:white;
 padding:20px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+border-radius:12px;
 }
 
 .item{
 display:flex;
 justify-content:space-between;
-padding:12px;
+padding:10px;
 border-bottom:1px solid #eee;
 }
 
-.total{
-font-size:22px;
-margin-top:15px;
-font-weight:bold;
-color:#00a86b;
-}
-
 button{
-padding:12px 20px;
-border:none;
+width:100%;
+padding:12px;
 background:#111;
 color:white;
+border:none;
 border-radius:20px;
+margin-top:10px;
 cursor:pointer;
-margin-top:15px;
-width:100%;
 }
 
 button:hover{
 background:#00a86b;
 }
 
-a{
-display:block;
-text-align:center;
-margin-top:15px;
+.total{
+font-size:22px;
+margin-top:10px;
 color:#00a86b;
-text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">Your Cart</div>
-
 <div class="box">
 
-<div id="cartBox"></div>
+<h2>Cart</h2>
+
+<div id="items"></div>
 
 <div class="total" id="total"></div>
 
 <button onclick="checkout()">Checkout</button>
 
-<a href="index.html">← Continue Shopping</a>
-
 </div>
 
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+let box=document.getElementById("items");
+let total=0;
 
-let box = document.getElementById("cartBox");
-let total = 0;
-
-if(cart.length === 0){
-box.innerHTML = "<p>Your cart is empty 😭</p>";
-}else{
-
-cart.forEach((item, index)=>{
-box.innerHTML += `
+cart.forEach((i)=>{
+box.innerHTML+=`
 <div class="item">
-<span>${item.name}</span>
-<span>₦${item.price}</span>
+<span>${i.name} (${i.color}) x${i.qty}</span>
+<span>₦${i.price*i.qty}</span>
 </div>
 `;
-total += Number(item.price);
+total+=i.price*i.qty;
 });
-}
 
-document.getElementById("total").innerText = "Total: ₦" + total;
+document.getElementById("total").innerText="Total: ₦"+total;
 
 function checkout(){
-if(cart.length === 0){
-alert("Cart is empty!");
-return;
-}
-
-alert("Checkout feature can be connected to WhatsApp or payment gateway later");
+alert("Connect to WhatsApp or payment gateway later");
 }
 </script>
 
