@@ -29,7 +29,7 @@ font-size:26px;
 font-weight:bold;
 }
 
-/* CART BUTTON (MOVED + STYLED) */
+/* CART */
 .cart{
 background:#00ff99;
 color:#111;
@@ -39,7 +39,7 @@ font-weight:bold;
 font-size:16px;
 }
 
-/* HERO / PROMO BANNER SLIDER */
+/* PROMO BANNER */
 .banner{
 height:320px;
 display:flex;
@@ -47,22 +47,20 @@ align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-font-size:45px;
+font-size:46px;
 font-weight:bold;
 background-size:cover;
 background-position:center;
 animation:slide 12s infinite;
 }
 
-/* BANNER ANIMATION */
 @keyframes slide{
 0%{background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');}
-33%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
-66%{background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');}
-100%{background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');}
+50%{background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');}
+100%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
 }
 
-/* CATEGORY BAR */
+/* CATEGORY BAR (CLICKABLE) */
 .catbar{
 display:flex;
 gap:12px;
@@ -72,27 +70,34 @@ padding:15px;
 }
 
 .cat{
-padding:12px 18px;
+padding:14px 20px;
 background:#eee;
 border-radius:25px;
 font-size:18px;
 white-space:nowrap;
+cursor:pointer;
+transition:0.2s;
+}
+
+.cat:hover{
+background:#00ff99;
+color:#111;
 }
 
 /* PRODUCT GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 padding:25px;
 }
 
-/* PRODUCT CARD */
+/* PRODUCT CARD (BIGGER + MORE PREMIUM) */
 .card{
 background:white;
 border-radius:15px;
 overflow:hidden;
-box-shadow:0 8px 25px rgba(0,0,0,0.1);
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
 transition:0.3s;
 }
 
@@ -102,19 +107,19 @@ transform:translateY(-10px);
 
 .card img{
 width:100%;
-height:340px;
+height:380px; /* 🔥 BIGGER IMAGE */
 object-fit:cover;
 }
 
 .card h3{
 margin:14px;
-font-size:20px;
+font-size:22px; /* 🔥 BIGGER FONT */
 }
 
 .price{
-margin:0 14px 18px;
+margin:0 14px 20px;
 color:#00a86b;
-font-size:20px;
+font-size:22px; /* 🔥 BIGGER PRICE */
 font-weight:bold;
 }
 
@@ -127,48 +132,56 @@ color:black;
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
 <div class="logo">DMZ MART</div>
 <a href="cart.html" class="cart">🛒 Cart</a>
 </div>
 
-<!-- PROMO BANNER -->
 <div class="banner">
-MEGA ELECTRONICS SALE • UP TO 70% OFF • LIMITED TIME
+MEGA ELECTRONICS SALE • DEALS EVERYDAY • LIMITED STOCK
 </div>
 
-<!-- CATEGORY -->
+<!-- CATEGORY FILTER -->
 <div class="catbar">
-<div class="cat">Phones</div>
-<div class="cat">Laptops</div>
-<div class="cat">TVs</div>
-<div class="cat">Gaming</div>
-<div class="cat">Home Appliances</div>
-<div class="cat">Accessories</div>
+<div class="cat" onclick="filter('all')">All</div>
+<div class="cat" onclick="filter('phone')">Phones</div>
+<div class="cat" onclick="filter('laptop')">Laptops</div>
+<div class="cat" onclick="filter('tv')">TVs</div>
+<div class="cat" onclick="filter('gaming')">Gaming</div>
+<div class="cat" onclick="filter('home')">Home</div>
+<div class="cat" onclick="filter('audio')">Audio</div>
 </div>
 
 <!-- PRODUCTS -->
 <div class="grid" id="products"></div>
 
 <script>
-const products = [
-{name:"iPhone 15 Pro",price:1200000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"},
-{name:"Samsung S24 Ultra",price:1100000,img:"https://images.unsplash.com/photo-1512499617640-c2f999098c3a"},
-{name:"MacBook Pro M3",price:1800000,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"},
-{name:"Dell XPS 15",price:1300000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853"},
-{name:"PlayStation 5",price:750000,img:"https://images.unsplash.com/photo-1606813907291-d86efa9b94db"},
-{name:"Xbox Series X",price:720000,img:"https://images.unsplash.com/photo-1621259182978-fbf93132d53d"},
-{name:"55 inch Smart TV",price:650000,img:"https://images.unsplash.com/photo-1593359677879-a4bb92f829d1"},
-{name:"Washing Machine",price:480000,img:"https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d"},
-{name:"Apple Watch Ultra",price:350000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30"},
-{name:"AirPods Pro",price:180000,img:"https://images.unsplash.com/photo-1585386959984-a41552231693"}
-];
 
-let list=[...products,...products]; // more items
+const products = [
+
+{name:"iPhone 15 Pro",price:1200000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",cat:"phone"},
+{name:"Samsung S24 Ultra",price:1100000,img:"https://images.unsplash.com/photo-1512499617640-c2f999098c3a",cat:"phone"},
+{name:"Google Pixel 8",price:700000,img:"https://images.unsplash.com/photo-1598327105666-5b89351aff97",cat:"phone"},
+
+{name:"MacBook Pro M3",price:1800000,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8",cat:"laptop"},
+{name:"Dell XPS 15",price:1300000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853",cat:"laptop"},
+
+{name:"55 inch Smart TV",price:650000,img:"https://images.unsplash.com/photo-1593359677879-a4bb92f829d1",cat:"tv"},
+
+{name:"PlayStation 5",price:750000,img:"https://images.unsplash.com/photo-1606813907291-d86efa9b94db",cat:"gaming"},
+{name:"Xbox Series X",price:720000,img:"https://images.unsplash.com/photo-1621259182978-fbf93132d53d",cat:"gaming"},
+
+{name:"Washing Machine",price:480000,img:"https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d",cat:"home"},
+
+{name:"AirPods Pro",price:180000,img:"https://images.unsplash.com/photo-1585386959984-a41552231693",cat:"audio"},
+{name:"Apple Watch Ultra",price:350000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30",cat:"audio"}
+
+];
 
 let box=document.getElementById("products");
 
+function show(list){
+box.innerHTML="";
 list.forEach(p=>{
 box.innerHTML+=`
 <a href="product.html?name=${p.name}&price=${p.price}&img=${p.img}">
@@ -180,6 +193,19 @@ box.innerHTML+=`
 </a>
 `;
 });
+}
+
+show(products);
+
+function filter(cat){
+if(cat==="all"){
+show(products);
+}else{
+let filtered=products.filter(p=>p.cat===cat);
+show(filtered);
+}
+}
+
 </script>
 
 </body>
