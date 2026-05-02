@@ -7,7 +7,7 @@
 body{
 margin:0;
 font-family:Arial;
-background:#f1f3f6;
+background:#f4f6f8;
 }
 
 /* TOP BAR */
@@ -39,17 +39,17 @@ font-weight:bold;
 
 /* HERO */
 .hero{
-height:360px;
+height:340px;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-font-size:44px;
+font-size:42px;
 font-weight:bold;
 background-size:cover;
 background-position:center;
-animation:slide 15s infinite;
+animation:slide 12s infinite;
 }
 
 @keyframes slide{
@@ -58,78 +58,49 @@ animation:slide 15s infinite;
 100%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
 }
 
-/* CATEGORY */
-.catbar{
-display:flex;
-gap:12px;
-overflow-x:auto;
-background:white;
-padding:15px;
-}
-
-.cat{
-padding:14px 18px;
-background:#eee;
-border-radius:25px;
-white-space:nowrap;
-font-size:18px;
-}
-
 /* SECTION TITLE */
 .section-title{
-padding:18px 22px;
+padding:18px 25px;
 font-size:24px;
 font-weight:bold;
 }
 
-/* GRID (DENSER LIKE JUMIA) */
+/* GRID (CLEAN, NOT JAMMED) */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-padding:20px;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+padding:20px 25px 40px;
 }
 
-/* CARD */
+/* PRODUCT CARD */
 .card{
 background:white;
-border-radius:12px;
+border-radius:14px;
 overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-transition:0.3s;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+transition:0.25s;
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-6px);
 }
 
 .card img{
 width:100%;
-height:230px;
+height:240px;
 object-fit:cover;
 }
 
 .card h3{
 margin:10px;
-font-size:16px;
+font-size:17px;
 }
 
 .price{
-margin:0 10px 12px;
+margin:0 10px 15px;
 color:#00a86b;
-font-size:16px;
-font-weight:bold;
-}
-
-/* PROMO */
-.promo{
-margin:20px;
-padding:25px;
-border-radius:15px;
-background:linear-gradient(90deg,#111,#00ff99);
-color:white;
-font-size:22px;
-text-align:center;
+font-size:17px;
 font-weight:bold;
 }
 </style>
@@ -143,90 +114,105 @@ font-weight:bold;
 </div>
 
 <div class="hero">
-MEGA ELECTRONICS MARKETPLACE • DEALS EVERYDAY
-</div>
-
-<div class="promo">
-🔥 FLASH SALE • ELECTRONICS • GAMING • HOME DEVICES
+YOUR PREMIUM ELECTRONICS MARKETPLACE
 </div>
 
 <div class="section-title">⚡ Flash Deals</div>
-<div class="grid" id="flash"></div>
+<div class="grid">
 
-<div class="section-title">📱 Phones & Smart Devices</div>
-<div class="grid" id="phones"></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>iPhone 15 Pro Max</h3>
+<div class="price">₦1,350,000</div>
+</div>
 
-<div class="section-title">💻 Laptops & Computing</div>
-<div class="grid" id="laptops"></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>MacBook Pro M3</h3>
+<div class="price">₦1,800,000</div>
+</div>
 
-<div class="section-title">🎮 Gaming & Consoles</div>
-<div class="grid" id="gaming"></div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PlayStation 5</h3>
+<div class="price">₦750,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+<h3>AirPods Pro</h3>
+<div class="price">₦180,000</div>
+</div>
+
+</div>
+
+<div class="section-title">📱 Phones</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>iPhone 14 Pro</h3>
+<div class="price">₦950,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<h3>Samsung S24 Ultra</h3>
+<div class="price">₦1,100,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97">
+<h3>Google Pixel 8</h3>
+<div class="price">₦700,000</div>
+</div>
+
+</div>
+
+<div class="section-title">💻 Laptops</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>MacBook Air M2</h3>
+<div class="price">₦1,200,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
+<h3>Dell XPS 15</h3>
+<div class="price">₦1,300,000</div>
+</div>
+
+</div>
+
+<div class="section-title">🎮 Gaming</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PlayStation 5</h3>
+<div class="price">₦750,000</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
+<h3>Xbox Series X</h3>
+<div class="price">₦720,000</div>
+</div>
+
+</div>
 
 <div class="section-title">🏠 Home Appliances</div>
-<div class="grid" id="home"></div>
+<div class="grid">
 
-<div class="section-title">🔊 Audio & Accessories</div>
-<div class="grid" id="audio"></div>
-
-<script>
-
-/* MASSIVE PRODUCT DATABASE (AUTO EXPANDS FEEL LIKE 100+) */
-const products = {
-flash:[
-"iPhone 15 Pro","Samsung S24 Ultra","MacBook Pro M3","PS5 Console","Xbox Series X"
-],
-phones:[
-"iPhone 14","iPhone 15","Samsung A55","Samsung S23","Google Pixel 8","Infinix Zero Ultra","Tecno Camon 30","Xiaomi 14"
-],
-laptops:[
-"MacBook Air M2","MacBook Pro M3","Dell XPS 15","HP Envy","Lenovo Legion","Asus ROG","Acer Swift","Surface Laptop 5"
-],
-gaming:[
-"PS5 Digital","PS5 Disc","Xbox Series S","Xbox Series X","Gaming Chair","Gaming Monitor","RGB Keyboard","Gaming Mouse"
-],
-home:[
-"Washing Machine","Smart Fridge","Air Conditioner","Robot Vacuum","Electric Cooker","Microwave Oven","Water Dispenser","Blender"
-],
-audio:[
-"AirPods Pro","Sony Headphones","JBL Speaker","Bose Headset","Marshall Speaker","Beats Studio","Wireless Earbuds","Soundbar"
-]
-};
-
-const images=[
-"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
-"https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-"https://images.unsplash.com/photo-1606813907291-d86efa9b94db",
-"https://images.unsplash.com/photo-1585386959984-a41552231693",
-"https://images.unsplash.com/photo-1512499617640-c2f999098c3a"
-];
-
-function render(id,list){
-let box=document.getElementById(id);
-list.forEach((name,i)=>{
-let price=Math.floor(Math.random()*900000)+50000;
-let img=images[i%images.length];
-
-box.innerHTML+=`
-<a href="product.html?name=${name}&price=${price}&img=${img}">
 <div class="card">
-<img src="${img}">
-<h3>${name}</h3>
-<div class="price">₦${price}</div>
+<img src="https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d">
+<h3>Washing Machine</h3>
+<div class="price">₦480,000</div>
 </div>
-</a>
-`;
-});
-}
 
-/* BUILD EVERYTHING */
-render("flash",products.flash);
-render("phones",products.phones);
-render("laptops",products.laptops);
-render("gaming",products.gaming);
-render("home",products.home);
-render("audio",products.audio);
-
-</script>
+</div>
 
 </body>
 </html>
