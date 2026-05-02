@@ -1,152 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Product</title>
-
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#f1f3f6;
-}
-
-.container{
-max-width:1000px;
-margin:40px auto;
-background:white;
-padding:25px;
-display:flex;
-gap:25px;
-border-radius:15px;
-}
-
-img{
-width:450px;
-border-radius:10px;
-}
-
-h1{
-font-size:32px;
-}
-
-.price{
-font-size:28px;
-color:#00a86b;
-margin:10px 0;
-}
-
-select,input{
-padding:12px;
-width:100%;
-margin:8px 0;
-font-size:16px;
-}
-
-button{
-width:100%;
-padding:15px;
-font-size:16px;
-background:#111;
-color:white;
-border:none;
-border-radius:25px;
-}
-
-button:hover{
-background:#00a86b;
-}
-
-/* SUGGESTIONS */
-.suggest{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;
-margin-top:30px;
-}
-
-.scard{
-background:white;
-padding:10px;
-border-radius:10px;
-box-shadow:0 5px 10px rgba(0,0,0,0.1);
-}
-
-.scard img{
-width:100%;
-height:150px;
-object-fit:cover;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMZ Mart - Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+<body class="bg-gray-50 min-h-screen">
 
-<body>
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <a href="index.html" class="flex items-center gap-2 text-orange-600 mb-8 hover:text-orange-700">
+            <i class="fas fa-arrow-left"></i> Back to Shop
+        </a>
 
-<div class="container">
+        <div class="grid md:grid-cols-2 gap-12">
+            <div>
+                <img id="productImg" class="w-full rounded-3xl shadow-xl" alt="">
+            </div>
 
-<img id="img">
+            <div>
+                <h1 id="productName" class="text-4xl font-bold"></h1>
+                <p id="productPrice" class="text-4xl font-bold text-orange-600 mt-4"></p>
 
-<div>
-<h1 id="name"></h1>
-<div class="price" id="price"></div>
+                <div class="mt-8">
+                    <h3 class="font-semibold mb-2">Description</h3>
+                    <p id="productDesc" class="text-gray-600"></p>
+                </div>
 
-<label>Color</label>
-<select>
-<option>Black</option>
-<option>White</option>
-<option>Blue</option>
-</select>
+                <button onclick="addToCart()" 
+                    class="mt-12 w-full bg-orange-600 hover:bg-orange-700 text-white py-5 rounded-3xl text-xl font-semibold">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
 
-<label>Storage</label>
-<select>
-<option>128GB</option>
-<option>256GB</option>
-<option>512GB</option>
-</select>
+    <script>
+        // Sample product database
+        const products = {
+            "a35": {
+                name: "Samsung Galaxy A35 5G",
+                price: 148000,
+                img: "https://i.postimg.cc/XqXKd8HW/IMG-1749.jpg",
+                desc: "Excellent mid-range phone with great camera and battery."
+            },
+            "s24": {
+                name: "Samsung Galaxy S24 Ultra",
+                price: 875000,
+                img: "https://i.postimg.cc/q7PXyyfp/IMG-1757.jpg",
+                desc: "Flagship smartphone with premium features."
+            },
+            "nike": {
+                name: "Nike Dunk Low",
+                price: 42500,
+                img: "https://i.postimg.cc/wj091QmD/IMG-1762.jpg",
+                desc: "Classic and comfortable sneakers."
+            }
+            // Add more products here as needed
+        };
 
-<button onclick="add()">Add to Cart</button>
-</div>
+        // Get product from URL (example: product.html?id=a35)
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id') || "a35"; // default
 
-</div>
+        const product = products[productId];
 
-<h2 style="margin:20px;">You may also like</h2>
-<div class="suggest" id="suggest"></div>
+        if (product) {
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('productPrice').textContent = "₦" + product.price.toLocaleString();
+            document.getElementById('productImg').src = product.img;
+            document.getElementById('productDesc').textContent = product.desc;
+        }
 
-<script>
-let p=new URLSearchParams(window.location.search);
-
-let name=p.get("name");
-let price=p.get("price");
-let img=p.get("img");
-
-document.getElementById("name").innerText=name;
-document.getElementById("price").innerText="₦"+price;
-document.getElementById("img").src=img;
-
-function add(){
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
-cart.push({name,price});
-localStorage.setItem("cart",JSON.stringify(cart));
-alert("Added!");
-}
-
-// suggestions
-let sample=[
-{name:"Gaming Laptop",img:img},
-{name:"Smart TV",img:img},
-{name:"AirPods",img:img}
-];
-
-let box=document.getElementById("suggest");
-
-sample.forEach(s=>{
-box.innerHTML+=`
-<div class="scard">
-<img src="${s.img}">
-<h3>${s.name}</h3>
-</div>
-`;
-});
-</script>
-
+        function addToCart() {
+            alert("✅ " + product.name + " added to cart!");
+        }
+    </script>
 </body>
 </html>
