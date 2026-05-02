@@ -1,205 +1,637 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>DMZ Mart</title>
-
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#f4f4f4;
-}
-
-/* TOP BAR (REAL JUMIA FEEL) */
-.topbar{
-background:#f68b1e;
-display:flex;
-align-items:center;
-padding:10px 15px;
-position:sticky;
-top:0;
-z-index:10;
-}
-
-.logo{
-color:white;
-font-size:20px;
-font-weight:bold;
-margin-right:10px;
-}
-
-.search{
-flex:1;
-}
-
-.search input{
-width:100%;
-padding:9px;
-border:none;
-border-radius:4px;
-font-size:14px;
-}
-
-/* CATEGORY STRIP */
-.categories{
-display:flex;
-overflow-x:auto;
-gap:8px;
-padding:8px;
-background:white;
-}
-
-.cat{
-padding:7px 12px;
-background:#eee;
-border-radius:18px;
-white-space:nowrap;
-font-size:13px;
-}
-
-/* BANNER */
-.banner{
-height:200px;
-background:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:24px;
-font-weight:bold;
-text-align:center;
-}
-
-/* SECTION TITLE */
-.section-title{
-padding:10px 12px;
-font-size:15px;
-font-weight:bold;
-}
-
-/* PRODUCT GRID (IMPORTANT JUMIA BALANCE) */
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-padding:10px;
-}
-
-/* PRODUCT CARD (REALISTIC SIZE) */
-.card{
-background:white;
-border-radius:6px;
-overflow:hidden;
-box-shadow:0 1px 4px rgba(0,0,0,0.1);
-}
-
-.card img{
-width:100%;
-height:150px;
-object-fit:cover;
-}
-
-.card h3{
-font-size:13px;
-margin:6px;
-}
-
-.price{
-margin:0 6px 10px;
-font-size:14px;
-font-weight:bold;
-color:green;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMZ Mart - Shop Everything Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/id/1015/2000/800') center/cover no-repeat;
+        }
+        
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .nav-link {
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            color: #f97316;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-orange-600 text-white py-2 text-sm">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1"><i class="fas fa-truck"></i> Free delivery on orders over ₦50,000</span>
+            </div>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="#" class="hover:underline">Sell on DMZ Mart</a>
+                <a href="#" class="hover:underline">Help Center</a>
+                <a href="#" class="flex items-center gap-1"><i class="fas fa-globe"></i> EN</a>
+            </div>
+        </div>
+    </div>
 
-<body>
+    <!-- Main Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-3xl">D</div>
+                    <div>
+                        <span class="text-3xl font-bold tracking-tight text-gray-900">DMZ</span>
+                        <span class="text-3xl font-bold tracking-tight text-orange-600">Mart</span>
+                    </div>
+                </div>
 
-<!-- TOP -->
-<div class="topbar">
-<div class="logo">DMZ</div>
-<div class="search">
-<input placeholder="Search products, brands and categories">
-</div>
-</div>
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <input type="text" id="searchInput"
+                            class="w-full border-2 border-gray-300 focus:border-orange-500 rounded-full py-3 px-6 text-lg outline-none"
+                            placeholder="Search phones, laptops, fashion, and more...">
+                        <button onclick="performSearch()" 
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-orange-600 text-white px-8 py-2 rounded-full hover:bg-orange-700 transition-colors">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
 
-<!-- CATEGORY -->
-<div class="categories">
-<div class="cat">Phones</div>
-<div class="cat">Laptops</div>
-<div class="cat">TVs</div>
-<div class="cat">Gaming</div>
-<div class="cat">Home</div>
-<div class="cat">Audio</div>
-<div class="cat">Fashion</div>
-</div>
+                <!-- Right side -->
+                <div class="flex items-center gap-6">
+                    <a href="#" onclick="showAccountModal()" class="flex flex-col items-center hover:text-orange-600">
+                        <i class="fas fa-user text-2xl"></i>
+                        <span class="text-xs mt-1">Account</span>
+                    </a>
+                    <a href="#" onclick="showOrders()" class="flex flex-col items-center hover:text-orange-600">
+                        <i class="fas fa-box text-2xl"></i>
+                        <span class="text-xs mt-1">Orders</span>
+                    </a>
+                    <a href="#" onclick="toggleCart()" class="flex flex-col items-center relative hover:text-orange-600">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                        <span class="text-xs mt-1">Cart</span>
+                        <span id="cartCount" 
+                            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-<!-- BANNER -->
-<div class="banner">
-Mega Deals • Up to 70% Off
-</div>
+        <!-- Category Navigation -->
+        <nav class="border-t bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex items-center gap-8 py-3 text-sm font-medium overflow-x-auto scrollbar-hide">
+                    <a href="#" onclick="scrollToSection('electronics')" class="nav-link text-gray-700 hover:text-orange-600 whitespace-nowrap">Electronics</a>
+                    <a href="#" onclick="scrollToSection('fashion')" class="nav-link text-gray-700 hover:text-orange-600 whitespace-nowrap">Fashion</a>
+                    <a href="#" onclick="scrollToSection('home')" class="nav-link text-gray-700 hover:text-orange-600 whitespace-nowrap">Home &amp; Kitchen</a>
+                    <a href="#" onclick="scrollToSection('beauty')" class="nav-link text-gray-700 hover:text-orange-600 whitespace-nowrap">Beauty</a>
+                    <a href="#" onclick="scrollToSection('phones')" class="nav-link text-gray-700 hover:text-orange-600 whitespace-nowrap">Phones &amp; Tablets</a>
+                    <a href="#" onclick="scrollToSection('computing')" class="nav-link text-gray-700 hover:text-orange-600 whitespace-nowrap">Computing</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-orange-600 whitespace-nowrap">Groceries</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-orange-600 whitespace-nowrap">Sports</a>
+                    <a href="#" class="nav-link text-orange-600 font-semibold whitespace-nowrap">Flash Sales 🔥</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<!-- FLASH SALES -->
-<div class="section-title">Flash Sales</div>
-<div class="grid">
+    <!-- Hero Banner -->
+    <div class="hero-bg h-[500px] flex items-center text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="max-w-lg">
+                <h1 class="text-6xl font-bold leading-tight mb-4">Biggest Shopping Festival</h1>
+                <p class="text-2xl mb-8">Up to 70% OFF on Electronics, Fashion &amp; More</p>
+                <button onclick="document.getElementById('flash-deals').scrollIntoView({ behavior: 'smooth' })"
+                    class="bg-orange-600 hover:bg-orange-700 text-white text-xl font-semibold px-10 py-4 rounded-2xl flex items-center gap-3">
+                    Shop Now 
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div class="mt-6 flex gap-8 text-sm">
+                    <div>✅ 30 Days Return</div>
+                    <div>✅ Cash on Delivery</div>
+                    <div>✅ Trusted Sellers</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<h3>iPhone 15 Pro</h3>
-<div class="price">₦1,200,000</div>
-</div>
+    <!-- Flash Deals -->
+    <div id="flash-deals" class="max-w-7xl mx-auto px-4 py-8">
+        <div class="flex justify-between items-end mb-6">
+            <div>
+                <span class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold">🔥 FLASH SALE</span>
+                <h2 class="text-3xl font-bold mt-2">Deals Ending Soon</h2>
+            </div>
+            <div class="text-orange-600 font-medium">Ends in: <span id="countdown" class="font-mono">12h 34m 56s</span></div>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="flash-products">
+            <!-- Populated by JS -->
+        </div>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>MacBook Pro</h3>
-<div class="price">₦1,800,000</div>
-</div>
+    <!-- Electronics Section -->
+    <div id="electronics" class="max-w-7xl mx-auto px-4 py-12 bg-white">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl font-bold flex items-center gap-3">
+                <i class="fas fa-laptop text-orange-600"></i>
+                Electronics
+            </h2>
+            <a href="#" class="text-orange-600 hover:underline flex items-center gap-2">View all <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="electronics-products">
+            <!-- Populated by JS -->
+        </div>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<h3>PlayStation 5</h3>
-<div class="price">₦750,000</div>
-</div>
+    <!-- Phones Section -->
+    <div id="phones" class="max-w-7xl mx-auto px-4 py-12 bg-gray-50">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl font-bold flex items-center gap-3">
+                <i class="fas fa-mobile-alt text-orange-600"></i>
+                Phones &amp; Tablets
+            </h2>
+            <a href="#" class="text-orange-600 hover:underline flex items-center gap-2">View all <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="phones-products">
+            <!-- Populated by JS -->
+        </div>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
-<h3>AirPods Pro</h3>
-<div class="price">₦180,000</div>
-</div>
+    <!-- Fashion Section -->
+    <div id="fashion" class="max-w-7xl mx-auto px-4 py-12 bg-white">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl font-bold flex items-center gap-3">
+                <i class="fas fa-tshirt text-orange-600"></i>
+                Fashion
+            </h2>
+            <a href="#" class="text-orange-600 hover:underline flex items-center gap-2">View all <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="fashion-products">
+            <!-- Populated by JS -->
+        </div>
+    </div>
 
-</div>
+    <!-- Categories Grid -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-8 text-center">Shop by Category</h2>
+        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div onclick="scrollToSection('electronics')" class="bg-white rounded-3xl p-6 text-center cursor-pointer hover:shadow-xl transition-all group">
+                <div class="w-20 h-20 mx-auto bg-orange-100 rounded-2xl flex items-center justify-center text-4xl mb-4 group-hover:scale-110 transition-transform">💻</div>
+                <p class="font-semibold">Electronics</p>
+            </div>
+            <div onclick="scrollToSection('phones')" class="bg-white rounded-3xl p-6 text-center cursor-pointer hover:shadow-xl transition-all group">
+                <div class="w-20 h-20 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center text-4xl mb-4 group-hover:scale-110 transition-transform">📱</div>
+                <p class="font-semibold">Phones</p>
+            </div>
+            <div onclick="scrollToSection('fashion')" class="bg-white rounded-3xl p-6 text-center cursor-pointer hover:shadow-xl transition-all group">
+                <div class="w-20 h-20 mx-auto bg-pink-100 rounded-2xl flex items-center justify-center text-4xl mb-4 group-hover:scale-110 transition-transform">👕</div>
+                <p class="font-semibold">Fashion</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 text-center cursor-pointer hover:shadow-xl transition-all group">
+                <div class="w-20 h-20 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center text-4xl mb-4 group-hover:scale-110 transition-transform">🏠</div>
+                <p class="font-semibold">Home &amp; Kitchen</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 text-center cursor-pointer hover:shadow-xl transition-all group">
+                <div class="w-20 h-20 mx-auto bg-purple-100 rounded-2xl flex items-center justify-center text-4xl mb-4 group-hover:scale-110 transition-transform">💄</div>
+                <p class="font-semibold">Beauty</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 text-center cursor-pointer hover:shadow-xl transition-all group">
+                <div class="w-20 h-20 mx-auto bg-green-100 rounded-2xl flex items-center justify-center text-4xl mb-4 group-hover:scale-110 transition-transform">🥑</div>
+                <p class="font-semibold">Groceries</p>
+            </div>
+        </div>
+    </div>
 
-<!-- PHONES -->
-<div class="section-title">Phones</div>
-<div class="grid">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-orange-600 rounded-2xl flex items-center justify-center text-white font-bold">D</div>
+                        <span class="text-2xl font-bold text-white">DMZ Mart</span>
+                    </div>
+                    <p class="text-sm">Nigeria's favorite online shopping destination. Shop with confidence.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">Phones</a></li>
+                        <li><a href="#" class="hover:text-white">Fashion</a></li>
+                        <li><a href="#" class="hover:text-white">Electronics</a></li>
+                        <li><a href="#" class="hover:text-white">Deals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Returns</a></li>
+                        <li><a href="#" class="hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-white">Track Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+                    <div class="flex gap-4 text-2xl">
+                        <i class="fab fa-twitter hover:text-white cursor-pointer"></i>
+                        <i class="fab fa-instagram hover:text-white cursor-pointer"></i>
+                        <i class="fab fa-facebook hover:text-white cursor-pointer"></i>
+                    </div>
+                    <div class="mt-8">
+                        <p class="text-xs">© 2026 DMZ Mart. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<h3>iPhone 14 Pro</h3>
-<div class="price">₦950,000</div>
-</div>
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Your Cart</h3>
+                <button onclick="toggleCart()" class="text-3xl leading-none">×</button>
+            </div>
+            <div id="cartItems" class="space-y-6">
+                <!-- JS populated -->
+            </div>
+            <div class="mt-8 pt-6 border-t">
+                <div class="flex justify-between text-lg mb-2">
+                    <span>Subtotal</span>
+                    <span id="cartTotal" class="font-bold">₦124,500</span>
+                </div>
+                <button onclick="checkout()" 
+                    class="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 rounded-2xl font-semibold text-lg mt-4">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
-<h3>Samsung S24 Ultra</h3>
-<div class="price">₦1,100,000</div>
-</div>
+    <!-- Account Modal -->
+    <div id="accountModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
+        <div class="bg-white rounded-3xl max-w-md w-full mx-4 p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Account</h3>
+                <button onclick="hideAccountModal()" class="text-4xl leading-none text-gray-400">×</button>
+            </div>
+            <div class="space-y-6">
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-4xl">👤</div>
+                    <div>
+                        <p class="font-semibold">David</p>
+                        <p class="text-sm text-gray-500">dmzisking@gmail.com</p>
+                    </div>
+                </div>
+                <button onclick="hideAccountModal()" class="w-full py-4 border border-gray-300 rounded-2xl font-medium">My Orders</button>
+                <button onclick="hideAccountModal()" class="w-full py-4 border border-gray-300 rounded-2xl font-medium">Wishlist</button>
+                <button onclick="hideAccountModal()" class="w-full py-4 border border-gray-300 rounded-2xl font-medium">Addresses</button>
+                <button onclick="hideAccountModal()" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">Logout</button>
+            </div>
+        </div>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97">
-<h3>Google Pixel 8</h3>
-<div class="price">₦700,000</div>
-</div>
+    <script>
+        // Tailwind script already included via CDN
+        
+        // Sample Products
+        const products = {
+            flash: [
+                {
+                    id: 1,
+                    name: "Samsung Galaxy A35",
+                    price: 145000,
+                    oldPrice: 185000,
+                    image: "https://picsum.photos/id/201/300/300",
+                    discount: "22%"
+                },
+                {
+                    id: 2,
+                    name: "Sony WH-1000XM5 Headphones",
+                    price: 285000,
+                    oldPrice: 350000,
+                    image: "https://picsum.photos/id/180/300/300",
+                    discount: "19%"
+                },
+                {
+                    id: 3,
+                    name: "Nike Air Force 1",
+                    price: 45000,
+                    oldPrice: 65000,
+                    image: "https://picsum.photos/id/201/300/300",
+                    discount: "31%"
+                }
+            ],
+            electronics: [
+                {
+                    id: 4,
+                    name: "HP Pavilion Laptop 15",
+                    price: 425000,
+                    image: "https://picsum.photos/id/251/300/300"
+                },
+                {
+                    id: 5,
+                    name: "LG 55\" OLED TV",
+                    price: 895000,
+                    image: "https://picsum.photos/id/201/300/300"
+                },
+                {
+                    id: 6,
+                    name: "Apple AirPods Pro 2",
+                    price: 135000,
+                    image: "https://picsum.photos/id/180/300/300"
+                },
+                {
+                    id: 7,
+                    name: "Canon EOS 2000D Camera",
+                    price: 245000,
+                    image: "https://picsum.photos/id/251/300/300"
+                },
+                {
+                    id: 8,
+                    name: "Samsung 980 PRO SSD 1TB",
+                    price: 95000,
+                    image: "https://picsum.photos/id/201/300/300"
+                }
+            ],
+            phones: [
+                {
+                    id: 9,
+                    name: "iPhone 15 Pro 128GB",
+                    price: 895000,
+                    image: "https://picsum.photos/id/180/300/300"
+                },
+                {
+                    id: 10,
+                    name: "Tecno Camon 30",
+                    price: 185000,
+                    image: "https://picsum.photos/id/201/300/300"
+                },
+                {
+                    id: 11,
+                    name: "Samsung Galaxy S24",
+                    price: 725000,
+                    image: "https://picsum.photos/id/251/300/300"
+                }
+            ],
+            fashion: [
+                {
+                    id: 12,
+                    name: "Gucci Polo Shirt",
+                    price: 45000,
+                    image: "https://picsum.photos/id/201/300/300"
+                },
+                {
+                    id: 13,
+                    name: "Adidas Samba Sneakers",
+                    price: 38500,
+                    image: "https://picsum.photos/id/180/300/300"
+                },
+                {
+                    id: 14,
+                    name: "Leather Jacket Black",
+                    price: 125000,
+                    image: "https://picsum.photos/id/251/300/300"
+                }
+            ]
+        };
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e">
-<h3>Infinix Zero 30</h3>
-<div class="price">₦350,000</div>
-</div>
+        // Render Products
+        function renderProducts() {
+            // Flash Deals
+            const flashContainer = document.getElementById('flash-products');
+            flashContainer.innerHTML = products.flash.map(p => `
+                <div class="product-card bg-white border border-gray-200 rounded-3xl overflow-hidden">
+                    <div class="relative">
+                        <img src="${p.image}" class="w-full h-48 object-cover" alt="${p.name}">
+                        <div class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-2xl">${p.discount} OFF</div>
+                    </div>
+                    <div class="p-4">
+                        <p class="font-medium line-clamp-2 h-12">${p.name}</p>
+                        <div class="flex items-baseline gap-2 mt-3">
+                            <span class="text-2xl font-bold">₦${p.price.toLocaleString()}</span>
+                            <span class="text-gray-400 line-through text-sm">₦${p.oldPrice.toLocaleString()}</span>
+                        </div>
+                        <button onclick="addToCart(${p.id}, '${p.name}', ${p.price}, '${p.image}')" 
+                            class="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-2xl text-sm font-semibold">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
 
-</div>
+            // Electronics
+            const electronicsContainer = document.getElementById('electronics-products');
+            electronicsContainer.innerHTML = products.electronics.map(p => `
+                <div class="product-card bg-white border border-gray-200 rounded-3xl overflow-hidden">
+                    <img src="${p.image}" class="w-full h-48 object-cover" alt="${p.name}">
+                    <div class="p-4">
+                        <p class="font-medium line-clamp-2 h-12">${p.name}</p>
+                        <div class="mt-4 font-bold text-xl">₦${p.price.toLocaleString()}</div>
+                        <button onclick="addToCart(${p.id}, '${p.name}', ${p.price}, '${p.image}')" 
+                            class="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-2xl text-sm font-semibold">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
 
+            // Phones
+            const phonesContainer = document.getElementById('phones-products');
+            phonesContainer.innerHTML = products.phones.map(p => `
+                <div class="product-card bg-white border border-gray-200 rounded-3xl overflow-hidden">
+                    <img src="${p.image}" class="w-full h-48 object-cover" alt="${p.name}">
+                    <div class="p-4">
+                        <p class="font-medium line-clamp-2 h-12">${p.name}</p>
+                        <div class="mt-4 font-bold text-xl">₦${p.price.toLocaleString()}</div>
+                        <button onclick="addToCart(${p.id}, '${p.name}', ${p.price}, '${p.image}')" 
+                            class="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-2xl text-sm font-semibold">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Fashion
+            const fashionContainer = document.getElementById('fashion-products');
+            fashionContainer.innerHTML = products.fashion.map(p => `
+                <div class="product-card bg-white border border-gray-200 rounded-3xl overflow-hidden">
+                    <img src="${p.image}" class="w-full h-48 object-cover" alt="${p.name}">
+                    <div class="p-4">
+                        <p class="font-medium line-clamp-2 h-12">${p.name}</p>
+                        <div class="mt-4 font-bold text-xl">₦${p.price.toLocaleString()}</div>
+                        <button onclick="addToCart(${p.id}, '${p.name}', ${p.price}, '${p.image}')" 
+                            class="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-2xl text-sm font-semibold">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Cart functionality
+        let cart = [];
+
+        function addToCart(id, name, price, image) {
+            cart.push({ id, name, price, image, qty: 1 });
+            updateCartCount();
+            alert(`${name} added to cart!`);
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.toggle('translate-x-full');
+            
+            if (!sidebar.classList.contains('translate-x-full')) {
+                renderCart();
+            }
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            let total = 0;
+            
+            container.innerHTML = cart.map((item, index) => {
+                total += item.price * item.qty;
+                return `
+                    <div class="flex gap-4">
+                        <img src="${item.image}" class="w-20 h-20 object-cover rounded-2xl" alt="">
+                        <div class="flex-1">
+                            <p class="font-medium">${item.name}</p>
+                            <p class="text-orange-600 font-bold">₦${item.price.toLocaleString()}</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <button onclick="changeQty(${index}, -1)" class="w-6 h-6 border rounded-lg">-</button>
+                                <span>${item.qty}</span>
+                                <button onclick="changeQty(${index}, 1)" class="w-6 h-6 border rounded-lg">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500">×</button>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('cartTotal').textContent = `₦${total.toLocaleString()}`;
+        }
+
+        function changeQty(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty < 1) cart[index].qty = 1;
+            renderCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            renderCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            alert("Thank you for shopping at DMZ Mart! 🎉\n(This is a demo - order placed successfully)");
+            cart = [];
+            updateCartCount();
+            toggleCart();
+        }
+
+        // Search
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                alert(`Searching for "${query}"...\n\n(Results would appear here in a real app)`);
+            }
+        }
+
+        // Modals
+        function showAccountModal() {
+            document.getElementById('accountModal').classList.remove('hidden');
+        }
+        
+        function hideAccountModal() {
+            document.getElementById('accountModal').classList.add('hidden');
+        }
+
+        function showOrders() {
+            alert("Your recent orders:\n\n1. Samsung Galaxy A35 - Delivered\n2. Nike Sneakers - In Transit");
+        }
+
+        function scrollToSection(section) {
+            document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            let time = 12 * 3600 + 34 * 60 + 56; // 12h 34m 56s
+            setInterval(() => {
+                time--;
+                const hours = Math.floor(time / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+                document.getElementById('countdown').textContent = 
+                    `${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.getElementById('searchInput') !== document.activeElement) {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+        });
+
+        // Initialize
+        window.onload = function() {
+            renderProducts();
+            startCountdown();
+            updateCartCount();
+            
+            // Demo: add a couple items to cart
+            setTimeout(() => {
+                cart = [
+                    { id: 1, name: "Samsung Galaxy A35", price: 145000, image: "https://picsum.photos/id/201/300/300", qty: 1 },
+                    { id: 13, name: "Adidas Samba Sneakers", price: 38500, image: "https://picsum.photos/id/180/300/300", qty: 2 }
+                ];
+                updateCartCount();
+            }, 1500);
+        };
+    </script>
 </body>
 </html>
