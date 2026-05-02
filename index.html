@@ -21,6 +21,7 @@ padding:18px 22px;
 position:sticky;
 top:0;
 z-index:10;
+animation:fadeDown 0.6s ease;
 }
 
 .logo{
@@ -39,23 +40,25 @@ font-weight:bold;
 
 /* HERO */
 .hero{
-height:340px;
+height:360px;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-font-size:42px;
+font-size:44px;
 font-weight:bold;
 background-size:cover;
 background-position:center;
-animation:slide 12s infinite;
+animation:slide 15s infinite;
 }
 
+/* HERO SLIDES */
 @keyframes slide{
 0%{background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');}
-50%{background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');}
-100%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
+33%{background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');}
+66%{background-image:url('https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5');}
+100%{background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f');}
 }
 
 /* CATEGORY */
@@ -65,15 +68,21 @@ gap:12px;
 overflow-x:auto;
 background:white;
 padding:15px;
+animation:fadeUp 0.6s ease;
 }
 
 .cat{
 padding:14px 18px;
 background:#eee;
 border-radius:25px;
-white-space:nowrap;
 font-size:18px;
 cursor:pointer;
+transition:0.3s;
+}
+
+.cat:hover{
+background:#00ff99;
+transform:scale(1.1);
 }
 
 /* SECTION TITLE */
@@ -81,9 +90,10 @@ cursor:pointer;
 padding:18px 22px;
 font-size:24px;
 font-weight:bold;
+animation:fadeLeft 0.6s ease;
 }
 
-/* PRODUCT ROW */
+/* ROW */
 .row{
 display:flex;
 gap:15px;
@@ -91,7 +101,7 @@ overflow-x:auto;
 padding:10px 22px;
 }
 
-/* PRODUCT CARD (BIGGER FEEL) */
+/* PRODUCT CARD */
 .card{
 min-width:240px;
 background:white;
@@ -99,16 +109,22 @@ border-radius:15px;
 overflow:hidden;
 box-shadow:0 10px 25px rgba(0,0,0,0.12);
 transition:0.3s;
+animation:fadeUp 0.6s ease;
 }
 
 .card:hover{
-transform:scale(1.05);
+transform:translateY(-10px) scale(1.03);
 }
 
 .card img{
 width:100%;
 height:260px;
 object-fit:cover;
+transition:0.3s;
+}
+
+.card:hover img{
+transform:scale(1.05);
 }
 
 .card h3{
@@ -133,6 +149,23 @@ color:white;
 font-size:22px;
 font-weight:bold;
 text-align:center;
+animation:fadeUp 0.8s ease;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeLeft{
+from{opacity:0;transform:translateX(-30px);}
+to{opacity:1;transform:translateX(0);}
 }
 </style>
 </head>
@@ -147,7 +180,7 @@ text-align:center;
 
 <!-- HERO -->
 <div class="hero">
-MEGA ELECTRONICS STORE • DEALS EVERYDAY • FAST DELIVERY
+TECH • GAMING • LIFESTYLE STORE
 </div>
 
 <!-- CATEGORY -->
@@ -158,122 +191,113 @@ MEGA ELECTRONICS STORE • DEALS EVERYDAY • FAST DELIVERY
 <div class="cat">Gaming</div>
 <div class="cat">Home</div>
 <div class="cat">Audio</div>
-<div class="cat">Accessories</div>
-<div class="cat">Smart Devices</div>
+<div class="cat">Smart Tech</div>
 </div>
 
 <!-- PROMO -->
 <div class="promo">
-🔥 FLASH SALE LIVE • UP TO 70% OFF • LIMITED STOCK
+🔥 MEGA SALE LIVE — LIMITED TIME DEALS + FREE DELIVERY
 </div>
 
-<!-- SECTION 1 -->
+<!-- FLASH DEALS -->
 <div class="section-title">⚡ Flash Deals</div>
 <div class="row">
 
-<a href="product.html?name=iPhone 15 Pro&price=1200000&img=https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<a href="product.html?name=iPhone 15 Pro Max&price=1350000&img=https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<h3>iPhone 15 Pro</h3>
-<div class="price">₦1,200,000</div>
+<h3>iPhone 15 Pro Max</h3>
+<div class="price">₦1,350,000</div>
 </div>
 </a>
 
-<a href="product.html?name=PS5&price=750000&img=https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<a href="product.html?name=Galaxy Z Fold&price=1450000&img=https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<h3>PlayStation 5</h3>
-<div class="price">₦750,000</div>
+<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<h3>Galaxy Z Fold</h3>
+<div class="price">₦1,450,000</div>
 </div>
 </a>
 
-<a href="product.html?name=MacBook M3&price=1800000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<a href="product.html?name=Gaming Laptop RTX&price=1600000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>MacBook M3</h3>
-<div class="price">₦1,800,000</div>
+<h3>RTX Gaming Laptop</h3>
+<div class="price">₦1,600,000</div>
 </div>
 </a>
 
-<a href="product.html?name=AirPods Pro&price=180000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
+</div>
+
+<!-- GAMING -->
+<div class="section-title">🎮 Gaming Zone</div>
+<div class="row">
+
+<a href="product.html?name=PS5 Digital&price=720000&img=https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
-<h3>AirPods Pro</h3>
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PS5 Digital</h3>
+<div class="price">₦720,000</div>
+</div>
+</a>
+
+<a href="product.html?name=Gaming Chair&price=250000&img=https://images.unsplash.com/photo-1587202372775-98927f9e2f47">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1587202372775-98927f9e2f47">
+<h3>Gaming Chair</h3>
+<div class="price">₦250,000</div>
+</div>
+</a>
+
+<a href="product.html?name=RGB Keyboard&price=45000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>RGB Keyboard</h3>
+<div class="price">₦45,000</div>
+</div>
+</a>
+
+</div>
+
+<!-- HOME TECH -->
+<div class="section-title">🏠 Smart Home Tech</div>
+<div class="row">
+
+<a href="product.html?name=Smart Fridge&price=900000&img=https://images.unsplash.com/photo-1602526216910-1e9f1e1e1e1e">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585238342028-4c7f3b2c8b12">
+<h3>Smart Fridge</h3>
+<div class="price">₦900,000</div>
+</div>
+</a>
+
+<a href="product.html?name=Robot Vacuum&price=180000&img=https://images.unsplash.com/photo-1581578731548-c64695cc6952">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
+<h3>Robot Vacuum</h3>
 <div class="price">₦180,000</div>
 </div>
 </a>
 
 </div>
 
-<!-- SECTION 2 -->
-<div class="section-title">🔥 Trending Now</div>
+<!-- AUDIO -->
+<div class="section-title">🔊 Audio & Sound</div>
 <div class="row">
 
-<a href="product.html?name=Samsung S24 Ultra&price=1100000&img=https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
+<a href="product.html?name=Sony Headphones&price=120000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c3a">
-<h3>Samsung S24 Ultra</h3>
-<div class="price">₦1,100,000</div>
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+<h3>Sony Headphones</h3>
+<div class="price">₦120,000</div>
 </div>
 </a>
 
-<a href="product.html?name=Xbox Series X&price=720000&img=https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
+<a href="product.html?name=JBL Speaker&price=85000&img=https://images.unsplash.com/photo-1585386959984-a41552231693">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d">
-<h3>Xbox Series X</h3>
-<div class="price">₦720,000</div>
-</div>
-</a>
-
-<a href="product.html?name=Smart TV 55&price=650000&img=https://images.unsplash.com/photo-1593359677879-a4bb92f829d1">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1">
-<h3>55” Smart TV</h3>
-<div class="price">₦650,000</div>
-</div>
-</a>
-
-<a href="product.html?name=Apple Watch Ultra&price=350000&img=https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-<h3>Apple Watch Ultra</h3>
-<div class="price">₦350,000</div>
-</div>
-</a>
-
-</div>
-
-<!-- SECTION 3 -->
-<div class="section-title">💻 Laptops & Work Tech</div>
-<div class="row">
-
-<a href="product.html?name=Dell XPS 15&price=1300000&img=https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
-<h3>Dell XPS 15</h3>
-<div class="price">₦1,300,000</div>
-</div>
-</a>
-
-<a href="product.html?name=HP EliteBook&price=900000&img=https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<h3>HP EliteBook</h3>
-<div class="price">₦900,000</div>
-</div>
-</a>
-
-</div>
-
-<!-- SECTION 4 -->
-<div class="section-title">🏠 Home Appliances</div>
-<div class="row">
-
-<a href="product.html?name=Washing Machine&price=480000&img=https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1626806787461-102c1a1c8b2d">
-<h3>Washing Machine</h3>
-<div class="price">₦480,000</div>
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231693">
+<h3>JBL Speaker</h3>
+<div class="price">₦85,000</div>
 </div>
 </a>
 
